@@ -4,13 +4,16 @@
   "private": true,
   "dependencies": {
     "cra-template": "1.2.0",
+    "date-fns": "^2.29.3",
     "react": "^18.3.1",
+    "react-date-range": "^2.0.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.0.2",
     "react-scripts": "5.0.1",
     "recharts": "^2.14.1",
     "sass": "^1.82.0",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "svgr": "^1.10.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^8.1.0"
   }
 }
