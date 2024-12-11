@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Nav from "./components/nav/Nav";
 import Map from "./pages/map/Map";
 import Header from "./components/header/Header";
+import Psychotypes from "./pages/prychotypes/Psychotypes";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
 
             <Routes>
               <Route path="/map" element={<Map />} />
+              <Route path="/psychotypes" element={<Psychotypes />} />
             </Routes>
           </aside>
         </main>

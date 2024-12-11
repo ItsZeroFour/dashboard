@@ -22,22 +22,22 @@ This project is an interactive dashboard designed for data visualization and ana
 
 1. Clone the repository:
    
-   git clone https://github.com/ItaZeroFour/dashboard.git
+   ```git clone https://github.com/ItaZeroFour/dashboard.git```
    
 
 2. Navigate to the project directory:
    
-   cd dashboard
+   ```cd dashboard```
    
 
 3. Install dependencies:
    
-   npm install
+   ```npm install```
    
 
 4. Start the application:
    
-   npm start
+   ```npm start```
    
 
 ▎Contribution
@@ -46,4 +46,4 @@ If you would like to contribute to the project, please create a fork of the repo
 
 ▎License
 
-This project is licensed under the MIT License.
+`This project is licensed under the MIT License.`

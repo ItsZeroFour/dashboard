@@ -1,4 +1,4 @@
-.header {
+.header__wrapper {
   padding: 20px;
   border: 1px solid var(--color-gray);
   border-radius: 10px;
@@ -97,4 +97,119 @@
   &:hover {
     transform: scale(1.1);
   }
+}
+
+.map__top {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.map__top > p {
+  margin-top: 30px;
+}
+
+.map__top__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.map__top__nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    user-select: none;
+  }
+}
+
+.map__top__nav__list_1 {
+  background: var(--color-gray-secondary);
+  border-radius: 40px;
+
+  position: relative;
+
+  display: flex;
+  gap: 10px;
+  padding: 5px;
+  margin: 0;
+
+  list-style: none;
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+
+    background: var(--color-violet);
+    border-radius: 20px;
+
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+  }
+
+  button {
+    position: relative;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    padding: 10px 20px;
+    font-size: 16px;
+    color: var(--color-black);
+
+    transition: color 0.3s ease;
+
+    z-index: 1;
+
+    &.current {
+      color: var(--color-white);
+    }
+  }
+}
+
+.map__top__nav__list_2 {
+  li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}
+
+.map__calendar__icon {
+  padding: 10px;
+  background: rgba(114, 103, 240, 0.1);
+  border-radius: 10px;
+}
+
+.map__calendar {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  position: relative;
+
+  p {
+    font-size: 14px;
+  }
+}
+
+.map__calendar__wrapper {
+  position: relative;
+}
+
+.calendarContainer {
+  position: absolute;
+  top: 110%;
+  left: -30%;
+  z-index: 9;
 }

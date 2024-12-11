@@ -196,6 +196,12 @@
     border-color: transparent transparent #ffffff transparent;
     transform: rotate(180deg);
   }
+
+  transition: all 0.5s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 }
 
 .map__hotels {
@@ -237,7 +243,7 @@
       display: flex;
       align-items: center;
       gap: 2px;
-      
+
       font-size: 10px;
 
       position: relative;
@@ -251,12 +257,12 @@
       &::before {
         content: "";
         position: absolute;
-    
+
         top: 100%;
         left: 35%;
         right: 35%;
         transform: translate(50%, -50%);
-    
+
         width: 0px;
         height: 0px;
         border-style: solid;
@@ -295,6 +301,12 @@
   &:nth-child(6) {
     left: 30%;
     top: 50%;
+  }
+
+  transition: all 0.5s ease;
+
+  &:hover {
+    transform: translateY(-5px);
   }
 }
 

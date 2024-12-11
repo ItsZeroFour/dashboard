@@ -22,9 +22,9 @@ const Nav = () => {
     },
 
     {
-      link: "/mood",
+      link: "/psychotypes",
       icon: <MoodHappy />,
-      name: "mood",
+      name: "psychotypes",
     },
 
     {
