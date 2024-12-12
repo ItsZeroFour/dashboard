@@ -25,7 +25,7 @@
 }
 
 .psychotypes__item__last {
-  width: 380px;
+  width: auto;
 }
 
 .psychotypes__item__title {
@@ -296,4 +296,8 @@
   p {
     opacity: 0.6;
   }
+}
+
+.psychotypes__item__spec2 {
+    width: 350px;
 }

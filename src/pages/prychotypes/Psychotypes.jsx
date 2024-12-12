@@ -19,18 +19,10 @@ import { ReactComponent as BayView } from "../../assets/icons/psychotypes/bay-vi
 import { ReactComponent as Baby } from "../../assets/icons/psychotypes/baby.svg";
 import { ReactComponent as Wine } from "../../assets/icons/psychotypes/wine.svg";
 
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Text,
-} from "recharts";
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import Entertainment from "./Entertainment";
 
-const Psychotypes = () => {
+const Psychotypes = ({ filterChoose }) => {
   const [choosePsychotype, setChoosePsychotype] = useState(null);
   const [choosePsychotype2, setChoosePsychotype2] = useState(null);
   const [showDetailsIndex, setShowDetailsIndex] = useState(null);
@@ -56,529 +48,95 @@ const Psychotypes = () => {
 
   return (
     <React.Fragment>
-      <section className={style.psychotypes}>
-        <div className={style.psychotypes__item}>
-          <div className={style.psychotypes__item__top}>
-            <h2>Users by psychotype</h2>
-            <p>8.52k</p>
-          </div>
-
-          <table className={style.psychotypes__list}>
-            <tr>
-              <th></th>
-              <th>Total people</th>
-              <th>Over a period</th>
-              <th></th>
-            </tr>
-
-            {[
-              {
-                icon: <FirstImg1 />,
-                name: "Active tiger",
-                totalPeople: 1350,
-                overPeriod: 350,
-              },
-
-              {
-                icon: <FirstImg2 />,
-                name: "Interested adventurer",
-                totalPeople: 1350,
-                overPeriod: 350,
-              },
-
-              {
-                icon: <FirstImg3 />,
-                name: "Forever resting sloth",
-                totalPeople: 1350,
-                overPeriod: 350,
-              },
-
-              {
-                icon: <FirstImg4 />,
-                name: "A swim-loving trickster",
-                totalPeople: 1350,
-                overPeriod: 350,
-              },
-
-              {
-                icon: <FirstImg5 />,
-                name: "Unstoppable athlete",
-                totalPeople: 1350,
-                overPeriod: 350,
-              },
-
-              {
-                icon: <FirstImg6 />,
-                name: "Foodie",
-                totalPeople: 1350,
-                overPeriod: 350,
-              },
-
-              {
-                icon: <FirstImg7 />,
-                name: "Pointy-head",
-                totalPeople: 1350,
-                overPeriod: -350,
-              },
-
-              {
-                icon: <FirstImg8 />,
-                name: "Family fan",
-                totalPeople: 1350,
-                overPeriod: 350,
-              },
-            ].map(({ icon, name, totalPeople, overPeriod }) => (
-              <tr className={style.psychotypes__list__items}>
-                <td>
-                  <div className={style.psychotypes__name}>
-                    {icon}
-                    <p>{name}</p>
-                  </div>
-                </td>
-
-                <td>
-                  <p>{new Intl.NumberFormat("en").format(totalPeople)}</p>
-                </td>
-
-                <td>
-                  <p
-                    style={
-                      overPeriod < 0
-                        ? { color: "#ff453a" }
-                        : { color: "#28c76f" }
-                    }
-                  >
-                    {overPeriod > 0 && "+"}
-                    {new Intl.NumberFormat("en").format(overPeriod)}
-                  </p>
-                </td>
-
-                <td>
-                  <button
-                    onClick={() =>
-                      setChoosePsychotype({
-                        name: name,
-                      })
-                    }
-                  >
-                    <ChevronRight />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </table>
-        </div>
-
-        {choosePsychotype && (
-          <React.Fragment>
+      {filterChoose === "entertainment" ? (
+        <Entertainment />
+      ) : (
+        <React.Fragment>
+          <section className={style.psychotypes}>
             <div className={style.psychotypes__item}>
-              <h2 className={style.psychotypes__item__title}>
-                The most popular interests and content
-              </h2>
-
-              <ul className={style.psychotypes__item__list}>
-                {[
-                  {
-                    title: "Melomaniac",
-                    totalPeople: 350,
-                    overPeriod: 320,
-                    elements: [
-                      {
-                        title: "Melomaniac",
-                        totalPeople: 108,
-                        overPeriod: -7,
-                      },
-
-                      {
-                        title: "Clubs",
-                        totalPeople: 108,
-                        overPeriod: -7,
-                      },
-
-                      {
-                        title: "Aquaparks",
-                        totalPeople: 108,
-                        overPeriod: 34,
-                      },
-
-                      {
-                        title: "Gyms",
-                        totalPeople: 108,
-                        overPeriod: -327,
-                      },
-
-                      {
-                        title: "Сoffee houses",
-                        totalPeople: 108,
-                        overPeriod: 32,
-                      },
-                    ],
-                  },
-
-                  {
-                    title: "Melomaniac",
-                    totalPeople: 350,
-                    overPeriod: 320,
-                    elements: [
-                      {
-                        title: "Melomaniac",
-                        totalPeople: 108,
-                        overPeriod: -7,
-                      },
-
-                      {
-                        title: "Clubs",
-                        totalPeople: 108,
-                        overPeriod: -7,
-                      },
-
-                      {
-                        title: "Aquaparks",
-                        totalPeople: 108,
-                        overPeriod: 34,
-                      },
-
-                      {
-                        title: "Gyms",
-                        totalPeople: 108,
-                        overPeriod: -327,
-                      },
-
-                      {
-                        title: "Сoffee houses",
-                        totalPeople: 108,
-                        overPeriod: 32,
-                      },
-                    ],
-                  },
-
-                  {
-                    title: "Melomaniac",
-                    totalPeople: 350,
-                    overPeriod: 320,
-                    elements: [
-                      {
-                        title: "Melomaniac",
-                        totalPeople: 108,
-                        overPeriod: -7,
-                      },
-
-                      {
-                        title: "Clubs",
-                        totalPeople: 108,
-                        overPeriod: -7,
-                      },
-
-                      {
-                        title: "Aquaparks",
-                        totalPeople: 108,
-                        overPeriod: 34,
-                      },
-
-                      {
-                        title: "Gyms",
-                        totalPeople: 108,
-                        overPeriod: -327,
-                      },
-
-                      {
-                        title: "Сoffee houses",
-                        totalPeople: 108,
-                        overPeriod: 32,
-                      },
-                    ],
-                  },
-
-                  {
-                    title: "Melomaniac",
-                    totalPeople: 432,
-                    overPeriod: -20,
-                    elements: [
-                      {
-                        title: "Melomaniac",
-                        totalPeople: 108,
-                        overPeriod: -7,
-                      },
-
-                      {
-                        title: "Clubs",
-                        totalPeople: 108,
-                        overPeriod: -7,
-                      },
-
-                      {
-                        title: "Aquaparks",
-                        totalPeople: 108,
-                        overPeriod: 34,
-                      },
-
-                      {
-                        title: "Gyms",
-                        totalPeople: 108,
-                        overPeriod: -327,
-                      },
-
-                      {
-                        title: "Сoffee houses",
-                        totalPeople: 108,
-                        overPeriod: 32,
-                      },
-                    ],
-                  },
-
-                  {
-                    title: "Melomaniac",
-                    totalPeople: 350,
-                    overPeriod: 320,
-                    elements: [
-                      {
-                        title: "Melomaniac",
-                        totalPeople: 108,
-                        overPeriod: -7,
-                      },
-
-                      {
-                        title: "Clubs",
-                        totalPeople: 108,
-                        overPeriod: -7,
-                      },
-
-                      {
-                        title: "Aquaparks",
-                        totalPeople: 108,
-                        overPeriod: 34,
-                      },
-
-                      {
-                        title: "Gyms",
-                        totalPeople: 108,
-                        overPeriod: -327,
-                      },
-
-                      {
-                        title: "Сoffee houses",
-                        totalPeople: 108,
-                        overPeriod: 32,
-                      },
-                    ],
-                  },
-
-                  {
-                    title: "Melomaniac",
-                    totalPeople: 1233,
-                    overPeriod: 320,
-                    elements: [
-                      {
-                        title: "Melomaniac",
-                        totalPeople: 108,
-                        overPeriod: -7,
-                      },
-
-                      {
-                        title: "Clubs",
-                        totalPeople: 108,
-                        overPeriod: -7,
-                      },
-
-                      {
-                        title: "Aquaparks",
-                        totalPeople: 108,
-                        overPeriod: 34,
-                      },
-
-                      {
-                        title: "Gyms",
-                        totalPeople: 108,
-                        overPeriod: -327,
-                      },
-
-                      {
-                        title: "Сoffee houses",
-                        totalPeople: 108,
-                        overPeriod: 32,
-                      },
-                    ],
-                  },
-
-                  {
-                    title: "Melomaniac",
-                    totalPeople: 350,
-                    overPeriod: 320,
-                    elements: [
-                      {
-                        title: "Melomaniac",
-                        totalPeople: 108,
-                        overPeriod: -7,
-                      },
-
-                      {
-                        title: "Clubs",
-                        totalPeople: 108,
-                        overPeriod: -7,
-                      },
-
-                      {
-                        title: "Aquaparks",
-                        totalPeople: 108,
-                        overPeriod: 34,
-                      },
-
-                      {
-                        title: "Gyms",
-                        totalPeople: 108,
-                        overPeriod: -327,
-                      },
-
-                      {
-                        title: "Сoffee houses",
-                        totalPeople: 108,
-                        overPeriod: 32,
-                      },
-                    ],
-                  },
-                ].map(({ title, totalPeople, overPeriod, elements }, index) => (
-                  <li key={index}>
-                    <div className={style.psychotypes__item__main__content}>
-                      <p>{title}</p>
-                      <p>{totalPeople}</p>
-                      <p
-                        style={
-                          overPeriod < 0
-                            ? { color: "#ff453a" }
-                            : { color: "#28c76f" }
-                        }
-                      >
-                        {overPeriod > 0 && "+"}
-                        {new Intl.NumberFormat("en").format(overPeriod)}
-                      </p>
-                      <button
-                        onClick={() =>
-                          setShowDetailsIndex(
-                            showDetailsIndex === index ? null : index
-                          )
-                        }
-                      >
-                        <ChevronDown
-                          style={
-                            showDetailsIndex === index
-                              ? { transform: "rotate(180deg)" }
-                              : {
-                                  transform: "rotate(0deg)",
-                                }
-                          }
-                        />
-                      </button>
-                    </div>
-
-                    <div className={style.psychotypes__item__list__details}>
-                      <ul>
-                        {showDetailsIndex === index &&
-                          elements.map(
-                            ({ title, totalPeople, overPeriod }, index) => (
-                              <li key={index}>
-                                <p>{title}</p>
-                                <p>{totalPeople}</p>
-                                <p
-                                  style={
-                                    overPeriod < 0
-                                      ? { color: "#ff453a" }
-                                      : { color: "#28c76f" }
-                                  }
-                                >
-                                  {overPeriod > 0 && "+"}
-                                  {new Intl.NumberFormat("en").format(
-                                    overPeriod
-                                  )}
-                                </p>
-                              </li>
-                            )
-                          )}
-                      </ul>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div
-              className={`${style.psychotypes__item} ${style.psychotypes__item__last}`}
-            >
               <div className={style.psychotypes__item__top}>
-                <h2>Total people</h2>
+                <h2>Users by psychotype</h2>
                 <p>8.52k</p>
               </div>
 
-              <div className={style.psychotypes__item__select}>
-                <p>Interest</p>
-                <select
-                  onChange={(event) => setSelectValue(event.target.value)}
-                  value={selectValue}
-                >
-                  <option value="Melomaniac">Melomaniac</option>
-                  <option value="Aquaparks">Aquaparks</option>
-                  <option value="Restaurants">Restaurants</option>
-                </select>
-              </div>
+              <table className={style.psychotypes__list}>
+                <tr>
+                  <th></th>
+                  <th>Total people</th>
+                  <th>Over a period</th>
+                  <th></th>
+                </tr>
 
-              <div className={style.psychotypes__item__data}>
-                <div>
-                  <button>
-                    <ArrowDown />
-                  </button>
-                </div>
-
-                <p>Total people</p>
-                <p>Over a period</p>
-              </div>
-
-              <ul className={style.psychotypes__item__list__sec}>
                 {[
                   {
-                    name: "Restaurants",
-                    totalPeople: 852,
-                    overPeriod: 123,
+                    icon: <FirstImg1 />,
+                    name: "Active tiger",
+                    totalPeople: 1350,
+                    overPeriod: 350,
                   },
 
                   {
-                    name: "Clubs",
-                    totalPeople: 852,
-                    overPeriod: 123,
+                    icon: <FirstImg2 />,
+                    name: "Interested adventurer",
+                    totalPeople: 1350,
+                    overPeriod: 350,
                   },
 
                   {
-                    name: "Aquaparks",
-                    totalPeople: 852,
-                    overPeriod: 123,
+                    icon: <FirstImg3 />,
+                    name: "Forever resting sloth",
+                    totalPeople: 1350,
+                    overPeriod: 350,
                   },
 
                   {
-                    name: "Gyms",
-                    totalPeople: 852,
-                    overPeriod: 123,
+                    icon: <FirstImg4 />,
+                    name: "A swim-loving trickster",
+                    totalPeople: 1350,
+                    overPeriod: 350,
                   },
 
                   {
-                    name: "Сoffee houses",
-                    totalPeople: 852,
-                    overPeriod: 123,
+                    icon: <FirstImg5 />,
+                    name: "Unstoppable athlete",
+                    totalPeople: 1350,
+                    overPeriod: 350,
                   },
 
                   {
-                    name: "Bars",
-                    totalPeople: 852,
-                    overPeriod: -123,
+                    icon: <FirstImg6 />,
+                    name: "Foodie",
+                    totalPeople: 1350,
+                    overPeriod: 350,
                   },
 
                   {
-                    name: "City parks",
-                    totalPeople: 2352,
-                    overPeriod: 123,
+                    icon: <FirstImg7 />,
+                    name: "Pointy-head",
+                    totalPeople: 1350,
+                    overPeriod: -350,
                   },
-                ].map(({ name, totalPeople, overPeriod }, index) => (
-                  <li key={index}>
-                    <div className={style.psychotypes__item__list__item__main}>
-                      <p>{name}</p>
-                      <p>{totalPeople}</p>
+
+                  {
+                    icon: <FirstImg8 />,
+                    name: "Family fan",
+                    totalPeople: 1350,
+                    overPeriod: 350,
+                  },
+                ].map(({ icon, name, totalPeople, overPeriod }) => (
+                  <tr className={style.psychotypes__list__items}>
+                    <td>
+                      <div className={style.psychotypes__name}>
+                        {icon}
+                        <p>{name}</p>
+                      </div>
+                    </td>
+
+                    <td>
+                      <p>{new Intl.NumberFormat("en").format(totalPeople)}</p>
+                    </td>
+
+                    <td>
                       <p
                         style={
                           overPeriod < 0
@@ -589,241 +147,694 @@ const Psychotypes = () => {
                         {overPeriod > 0 && "+"}
                         {new Intl.NumberFormat("en").format(overPeriod)}
                       </p>
+                    </td>
+
+                    <td>
+                      <button
+                        onClick={() =>
+                          setChoosePsychotype({
+                            name: name,
+                          })
+                        }
+                      >
+                        <ChevronRight />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </table>
+            </div>
+
+            {choosePsychotype && (
+              <React.Fragment>
+                <div
+                  className={`${style.psychotypes__item} ${style.psychotypes__item__spec2}`}
+                >
+                  <h2 className={style.psychotypes__item__title}>
+                    The most popular interests and content
+                  </h2>
+
+                  <ul className={style.psychotypes__item__list}>
+                    {[
+                      {
+                        title: "Melomaniac",
+                        totalPeople: 350,
+                        overPeriod: 320,
+                        elements: [
+                          {
+                            title: "Melomaniac",
+                            totalPeople: 108,
+                            overPeriod: -7,
+                          },
+
+                          {
+                            title: "Clubs",
+                            totalPeople: 108,
+                            overPeriod: -7,
+                          },
+
+                          {
+                            title: "Aquaparks",
+                            totalPeople: 108,
+                            overPeriod: 34,
+                          },
+
+                          {
+                            title: "Gyms",
+                            totalPeople: 108,
+                            overPeriod: -327,
+                          },
+
+                          {
+                            title: "Сoffee houses",
+                            totalPeople: 108,
+                            overPeriod: 32,
+                          },
+                        ],
+                      },
+
+                      {
+                        title: "Melomaniac",
+                        totalPeople: 350,
+                        overPeriod: 320,
+                        elements: [
+                          {
+                            title: "Melomaniac",
+                            totalPeople: 108,
+                            overPeriod: -7,
+                          },
+
+                          {
+                            title: "Clubs",
+                            totalPeople: 108,
+                            overPeriod: -7,
+                          },
+
+                          {
+                            title: "Aquaparks",
+                            totalPeople: 108,
+                            overPeriod: 34,
+                          },
+
+                          {
+                            title: "Gyms",
+                            totalPeople: 108,
+                            overPeriod: -327,
+                          },
+
+                          {
+                            title: "Сoffee houses",
+                            totalPeople: 108,
+                            overPeriod: 32,
+                          },
+                        ],
+                      },
+
+                      {
+                        title: "Melomaniac",
+                        totalPeople: 350,
+                        overPeriod: 320,
+                        elements: [
+                          {
+                            title: "Melomaniac",
+                            totalPeople: 108,
+                            overPeriod: -7,
+                          },
+
+                          {
+                            title: "Clubs",
+                            totalPeople: 108,
+                            overPeriod: -7,
+                          },
+
+                          {
+                            title: "Aquaparks",
+                            totalPeople: 108,
+                            overPeriod: 34,
+                          },
+
+                          {
+                            title: "Gyms",
+                            totalPeople: 108,
+                            overPeriod: -327,
+                          },
+
+                          {
+                            title: "Сoffee houses",
+                            totalPeople: 108,
+                            overPeriod: 32,
+                          },
+                        ],
+                      },
+
+                      {
+                        title: "Melomaniac",
+                        totalPeople: 432,
+                        overPeriod: -20,
+                        elements: [
+                          {
+                            title: "Melomaniac",
+                            totalPeople: 108,
+                            overPeriod: -7,
+                          },
+
+                          {
+                            title: "Clubs",
+                            totalPeople: 108,
+                            overPeriod: -7,
+                          },
+
+                          {
+                            title: "Aquaparks",
+                            totalPeople: 108,
+                            overPeriod: 34,
+                          },
+
+                          {
+                            title: "Gyms",
+                            totalPeople: 108,
+                            overPeriod: -327,
+                          },
+
+                          {
+                            title: "Сoffee houses",
+                            totalPeople: 108,
+                            overPeriod: 32,
+                          },
+                        ],
+                      },
+
+                      {
+                        title: "Melomaniac",
+                        totalPeople: 350,
+                        overPeriod: 320,
+                        elements: [
+                          {
+                            title: "Melomaniac",
+                            totalPeople: 108,
+                            overPeriod: -7,
+                          },
+
+                          {
+                            title: "Clubs",
+                            totalPeople: 108,
+                            overPeriod: -7,
+                          },
+
+                          {
+                            title: "Aquaparks",
+                            totalPeople: 108,
+                            overPeriod: 34,
+                          },
+
+                          {
+                            title: "Gyms",
+                            totalPeople: 108,
+                            overPeriod: -327,
+                          },
+
+                          {
+                            title: "Сoffee houses",
+                            totalPeople: 108,
+                            overPeriod: 32,
+                          },
+                        ],
+                      },
+
+                      {
+                        title: "Melomaniac",
+                        totalPeople: 1233,
+                        overPeriod: 320,
+                        elements: [
+                          {
+                            title: "Melomaniac",
+                            totalPeople: 108,
+                            overPeriod: -7,
+                          },
+
+                          {
+                            title: "Clubs",
+                            totalPeople: 108,
+                            overPeriod: -7,
+                          },
+
+                          {
+                            title: "Aquaparks",
+                            totalPeople: 108,
+                            overPeriod: 34,
+                          },
+
+                          {
+                            title: "Gyms",
+                            totalPeople: 108,
+                            overPeriod: -327,
+                          },
+
+                          {
+                            title: "Сoffee houses",
+                            totalPeople: 108,
+                            overPeriod: 32,
+                          },
+                        ],
+                      },
+
+                      {
+                        title: "Melomaniac",
+                        totalPeople: 350,
+                        overPeriod: 320,
+                        elements: [
+                          {
+                            title: "Melomaniac",
+                            totalPeople: 108,
+                            overPeriod: -7,
+                          },
+
+                          {
+                            title: "Clubs",
+                            totalPeople: 108,
+                            overPeriod: -7,
+                          },
+
+                          {
+                            title: "Aquaparks",
+                            totalPeople: 108,
+                            overPeriod: 34,
+                          },
+
+                          {
+                            title: "Gyms",
+                            totalPeople: 108,
+                            overPeriod: -327,
+                          },
+
+                          {
+                            title: "Сoffee houses",
+                            totalPeople: 108,
+                            overPeriod: 32,
+                          },
+                        ],
+                      },
+                    ].map(
+                      ({ title, totalPeople, overPeriod, elements }, index) => (
+                        <li key={index}>
+                          <div
+                            className={style.psychotypes__item__main__content}
+                          >
+                            <p>{title}</p>
+                            <p>{totalPeople}</p>
+                            <p
+                              style={
+                                overPeriod < 0
+                                  ? { color: "#ff453a" }
+                                  : { color: "#28c76f" }
+                              }
+                            >
+                              {overPeriod > 0 && "+"}
+                              {new Intl.NumberFormat("en").format(overPeriod)}
+                            </p>
+                            <button
+                              onClick={() =>
+                                setShowDetailsIndex(
+                                  showDetailsIndex === index ? null : index
+                                )
+                              }
+                            >
+                              <ChevronDown
+                                style={
+                                  showDetailsIndex === index
+                                    ? { transform: "rotate(180deg)" }
+                                    : {
+                                        transform: "rotate(0deg)",
+                                      }
+                                }
+                              />
+                            </button>
+                          </div>
+
+                          <div
+                            className={style.psychotypes__item__list__details}
+                          >
+                            <ul>
+                              {showDetailsIndex === index &&
+                                elements.map(
+                                  (
+                                    { title, totalPeople, overPeriod },
+                                    index
+                                  ) => (
+                                    <li key={index}>
+                                      <p>{title}</p>
+                                      <p>{totalPeople}</p>
+                                      <p
+                                        style={
+                                          overPeriod < 0
+                                            ? { color: "#ff453a" }
+                                            : { color: "#28c76f" }
+                                        }
+                                      >
+                                        {overPeriod > 0 && "+"}
+                                        {new Intl.NumberFormat("en").format(
+                                          overPeriod
+                                        )}
+                                      </p>
+                                    </li>
+                                  )
+                                )}
+                            </ul>
+                          </div>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                </div>
+
+                <div
+                  className={`${style.psychotypes__item} ${style.psychotypes__item__last}`}
+                >
+                  <div className={style.psychotypes__item__top}>
+                    <h2>Total people</h2>
+                    <p>8.52k</p>
+                  </div>
+
+                  <div className={style.psychotypes__item__select}>
+                    <p>Interest</p>
+                    <select
+                      onChange={(event) => setSelectValue(event.target.value)}
+                      value={selectValue}
+                    >
+                      <option value="Melomaniac">Melomaniac</option>
+                      <option value="Aquaparks">Aquaparks</option>
+                      <option value="Restaurants">Restaurants</option>
+                    </select>
+                  </div>
+
+                  <div className={style.psychotypes__item__data}>
+                    <div>
+                      <button>
+                        <ArrowDown />
+                      </button>
                     </div>
 
-                    {index === 0 && (
-                      <ul>
-                        <li>
-                          <Coffee />
-                          <p>Tasty coffee</p>
-                        </li>
-
-                        <li>
-                          <Music />
-                          <p>Live music</p>
-                        </li>
-
-                        <li>
-                          <Breakfast />
-                          <p>Breakfast</p>
-                        </li>
-
-                        <li>
-                          <BayView />
-                          <p>Bay View</p>
-                        </li>
-
-                        <li>
-                          <Baby />
-                          <p>Children's room</p>
-                        </li>
-
-                        <li>
-                          <Wine />
-                          <p>Wine list</p>
-                        </li>
-                      </ul>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </React.Fragment>
-        )}
-      </section>
-
-      <section className={style.psychotypes}>
-        <div className={style.psychotypes__item}>
-          <div className={style.psychotypes__item__top}>
-            <h2>Users by psychotype</h2>
-            <p>8.52k</p>
-          </div>
-
-          <table className={style.psychotypes__list}>
-            <tr>
-              <th></th>
-              <th>Total people</th>
-              <th>Over a period</th>
-              <th></th>
-            </tr>
-
-            {[
-              {
-                icon: <FirstImg1 />,
-                name: "Active tiger",
-                totalPeople: 1350,
-                overPeriod: 350,
-              },
-
-              {
-                icon: <FirstImg2 />,
-                name: "Interested adventurer",
-                totalPeople: 1350,
-                overPeriod: 350,
-              },
-
-              {
-                icon: <FirstImg3 />,
-                name: "Forever resting sloth",
-                totalPeople: 1350,
-                overPeriod: 350,
-              },
-
-              {
-                icon: <FirstImg4 />,
-                name: "A swim-loving trickster",
-                totalPeople: 1350,
-                overPeriod: 350,
-              },
-
-              {
-                icon: <FirstImg5 />,
-                name: "Unstoppable athlete",
-                totalPeople: 1350,
-                overPeriod: 350,
-              },
-
-              {
-                icon: <FirstImg6 />,
-                name: "Foodie",
-                totalPeople: 1350,
-                overPeriod: 350,
-              },
-
-              {
-                icon: <FirstImg7 />,
-                name: "Pointy-head",
-                totalPeople: 1350,
-                overPeriod: -350,
-              },
-
-              {
-                icon: <FirstImg8 />,
-                name: "Family fan",
-                totalPeople: 1350,
-                overPeriod: 350,
-              },
-            ].map(({ icon, name, totalPeople, overPeriod }) => (
-              <tr className={style.psychotypes__list__items}>
-                <td>
-                  <div className={style.psychotypes__name}>
-                    {icon}
-                    <p>{name}</p>
+                    <p>Total people</p>
+                    <p>Over a period</p>
                   </div>
-                </td>
 
-                <td>
-                  <p>{new Intl.NumberFormat("en").format(totalPeople)}</p>
-                </td>
+                  <ul className={style.psychotypes__item__list__sec}>
+                    {[
+                      {
+                        name: "Restaurants",
+                        totalPeople: 852,
+                        overPeriod: 123,
+                      },
 
-                <td>
-                  <p
-                    style={
-                      overPeriod < 0
-                        ? { color: "#ff453a" }
-                        : { color: "#28c76f" }
-                    }
-                  >
-                    {overPeriod > 0 && "+"}
-                    {new Intl.NumberFormat("en").format(overPeriod)}
-                  </p>
-                </td>
+                      {
+                        name: "Clubs",
+                        totalPeople: 852,
+                        overPeriod: 123,
+                      },
 
-                <td>
-                  <button
-                    onClick={() =>
-                      setChoosePsychotype2({
-                        name: name,
-                      })
-                    }
-                  >
-                    <ChevronRight />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </table>
-        </div>
+                      {
+                        name: "Aquaparks",
+                        totalPeople: 852,
+                        overPeriod: 123,
+                      },
 
-        {choosePsychotype2 && (
-          <React.Fragment>
-            <div
-              className={`${style.psychotypes__item} ${style.psychotypes__item__spec}`}
-            >
-              <h2 className={style.psychotypes__item__title}>
-                Sentiment table
-              </h2>
+                      {
+                        name: "Gyms",
+                        totalPeople: 852,
+                        overPeriod: 123,
+                      },
 
-              <div className={style.psychotypes__item__top__data}>
-                <p>Shows</p>
-                <p>Average match</p>
+                      {
+                        name: "Сoffee houses",
+                        totalPeople: 852,
+                        overPeriod: 123,
+                      },
+
+                      {
+                        name: "Bars",
+                        totalPeople: 852,
+                        overPeriod: -123,
+                      },
+
+                      {
+                        name: "City parks",
+                        totalPeople: 2352,
+                        overPeriod: 123,
+                      },
+                    ].map(({ name, totalPeople, overPeriod }, index) => (
+                      <li key={index}>
+                        <div
+                          className={style.psychotypes__item__list__item__main}
+                        >
+                          <p>{name}</p>
+                          <p>{totalPeople}</p>
+                          <p
+                            style={
+                              overPeriod < 0
+                                ? { color: "#ff453a" }
+                                : { color: "#28c76f" }
+                            }
+                          >
+                            {overPeriod > 0 && "+"}
+                            {new Intl.NumberFormat("en").format(overPeriod)}
+                          </p>
+                        </div>
+
+                        {index === 0 && (
+                          <ul>
+                            <li>
+                              <Coffee />
+                              <p>Tasty coffee</p>
+                            </li>
+
+                            <li>
+                              <Music />
+                              <p>Live music</p>
+                            </li>
+
+                            <li>
+                              <Breakfast />
+                              <p>Breakfast</p>
+                            </li>
+
+                            <li>
+                              <BayView />
+                              <p>Bay View</p>
+                            </li>
+
+                            <li>
+                              <Baby />
+                              <p>Children's room</p>
+                            </li>
+
+                            <li>
+                              <Wine />
+                              <p>Wine list</p>
+                            </li>
+                          </ul>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </React.Fragment>
+            )}
+          </section>
+
+          <section className={style.psychotypes}>
+            <div className={style.psychotypes__item}>
+              <div className={style.psychotypes__item__top}>
+                <h2>Users by psychotype</h2>
+                <p>8.52k</p>
               </div>
 
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "20px",
-                }}
-              >
-                {data.map((item, index) => (
+              <table className={style.psychotypes__list}>
+                <tr>
+                  <th></th>
+                  <th>Total people</th>
+                  <th>Over a period</th>
+                  <th></th>
+                </tr>
+
+                {[
+                  {
+                    icon: <FirstImg1 />,
+                    name: "Active tiger",
+                    totalPeople: 1350,
+                    overPeriod: 350,
+                  },
+
+                  {
+                    icon: <FirstImg2 />,
+                    name: "Interested adventurer",
+                    totalPeople: 1350,
+                    overPeriod: 350,
+                  },
+
+                  {
+                    icon: <FirstImg3 />,
+                    name: "Forever resting sloth",
+                    totalPeople: 1350,
+                    overPeriod: 350,
+                  },
+
+                  {
+                    icon: <FirstImg4 />,
+                    name: "A swim-loving trickster",
+                    totalPeople: 1350,
+                    overPeriod: 350,
+                  },
+
+                  {
+                    icon: <FirstImg5 />,
+                    name: "Unstoppable athlete",
+                    totalPeople: 1350,
+                    overPeriod: 350,
+                  },
+
+                  {
+                    icon: <FirstImg6 />,
+                    name: "Foodie",
+                    totalPeople: 1350,
+                    overPeriod: 350,
+                  },
+
+                  {
+                    icon: <FirstImg7 />,
+                    name: "Pointy-head",
+                    totalPeople: 1350,
+                    overPeriod: -350,
+                  },
+
+                  {
+                    icon: <FirstImg8 />,
+                    name: "Family fan",
+                    totalPeople: 1350,
+                    overPeriod: 350,
+                  },
+                ].map(({ icon, name, totalPeople, overPeriod }) => (
+                  <tr className={style.psychotypes__list__items}>
+                    <td>
+                      <div className={style.psychotypes__name}>
+                        {icon}
+                        <p>{name}</p>
+                      </div>
+                    </td>
+
+                    <td>
+                      <p>{new Intl.NumberFormat("en").format(totalPeople)}</p>
+                    </td>
+
+                    <td>
+                      <p
+                        style={
+                          overPeriod < 0
+                            ? { color: "#ff453a" }
+                            : { color: "#28c76f" }
+                        }
+                      >
+                        {overPeriod > 0 && "+"}
+                        {new Intl.NumberFormat("en").format(overPeriod)}
+                      </p>
+                    </td>
+
+                    <td>
+                      <button
+                        onClick={() =>
+                          setChoosePsychotype2({
+                            name: name,
+                          })
+                        }
+                      >
+                        <ChevronRight />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </table>
+            </div>
+
+            {choosePsychotype2 && (
+              <React.Fragment>
+                <div
+                  className={`${style.psychotypes__item} ${style.psychotypes__item__spec}`}
+                >
+                  <h2 className={style.psychotypes__item__title}>
+                    Sentiment table
+                  </h2>
+
+                  <div className={style.psychotypes__item__top__data}>
+                    <p>Shows</p>
+                    <p>Average match</p>
+                  </div>
+
                   <div
-                    key={index}
                     style={{
                       display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
+                      flexDirection: "column",
+                      gap: "20px",
                     }}
                   >
-                    {/* Текстовые метки */}
-                    <span
-                      style={{
-                        fontSize: "14px",
-                        color: "#4A4A4A",
-                        width: "220px",
-                      }}
-                    >
-                      {item.title}
-                    </span>
-                    <span
-                      style={{
-                        width: "30px",
-                        textAlign: "right",
-                        color: "#4A4A4A",
-                      }}
-                    >
-                      {item.shows}
-                    </span>
+                    {data.map((item, index) => (
+                      <div
+                        key={index}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        {/* Текстовые метки */}
+                        <span
+                          style={{
+                            fontSize: "14px",
+                            color: "#4A4A4A",
+                            width: "220px",
+                          }}
+                        >
+                          {item.title}
+                        </span>
+                        <span
+                          style={{
+                            width: "30px",
+                            textAlign: "right",
+                            color: "#4A4A4A",
+                          }}
+                        >
+                          {item.shows}
+                        </span>
 
-                    {/* График */}
-                    <div style={{ flex: 2, marginLeft: "10px" }}>
-                      <ResponsiveContainer width="100%" height={20}>
-                        <BarChart layout="vertical" data={[item]}>
-                          <XAxis type="number" hide />
-                          <YAxis type="category" dataKey="label" hide />
-                          <Bar
-                            dataKey="total"
-                            fill="#F3F3F3"
-                            barSize={10}
-                            radius={[10, 10, 10, 10]}
-                          />
-                          <Bar
-                            dataKey="value"
-                            fill="#7B61FF"
-                            barSize={10}
-                            radius={[10, 10, 10, 10]}
-                            label={<CustomLabel />}
-                          />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </div>
+                        {/* График */}
+                        <div style={{ flex: 2, marginLeft: "10px" }}>
+                          <ResponsiveContainer width="100%" height={20}>
+                            <BarChart layout="vertical" data={[item]}>
+                              <XAxis type="number" hide />
+                              <YAxis type="category" dataKey="label" hide />
+                              <Bar
+                                dataKey="total"
+                                fill="#F3F3F3"
+                                barSize={10}
+                                radius={[10, 10, 10, 10]}
+                              />
+                              <Bar
+                                dataKey="value"
+                                fill="#7B61FF"
+                                barSize={10}
+                                radius={[10, 10, 10, 10]}
+                                label={<CustomLabel />}
+                              />
+                            </BarChart>
+                          </ResponsiveContainer>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
-          </React.Fragment>
-        )}
-      </section>
+                </div>
+              </React.Fragment>
+            )}
+          </section>
+        </React.Fragment>
+      )}
     </React.Fragment>
   );
 };

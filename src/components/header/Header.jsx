@@ -11,7 +11,7 @@ import { ru } from "date-fns/locale";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
-const Header = () => {
+const Header = ({ filterChoose, setFilterChoose }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [backgroundStyle, setBackgroundStyle] = useState({});
   const [dateRange, setDateRange] = useState({
@@ -107,21 +107,39 @@ const Header = () => {
 
             <ul className={style.map__top__nav__list_2}>
               <li>
-                <input type="radio" id="all" name="filter" />
+                <input
+                  type="radio"
+                  id="all"
+                  name="filter"
+                  onClick={() => setFilterChoose("all")}
+                  checked={filterChoose === "all"}
+                />
                 <label htmlFor="all" name="filter">
                   All
                 </label>
               </li>
 
               <li>
-                <input type="radio" id="entertainment" name="filter" />
+                <input
+                  type="radio"
+                  id="entertainment"
+                  name="filter"
+                  onClick={() => setFilterChoose("entertainment")}
+                  checked={filterChoose === "entertainment"}
+                />
                 <label htmlFor="entertainment" name="filter">
                   Entertainment
                 </label>
               </li>
 
               <li>
-                <input type="radio" id="business" name="filter" />
+                <input
+                  type="radio"
+                  id="business"
+                  name="filter"
+                  onClick={() => setFilterChoose("business")}
+                  checked={filterChoose === "business"}
+                />
                 <label htmlFor="business" name="filter">
                   Business
                 </label>
