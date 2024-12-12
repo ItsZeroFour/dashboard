@@ -22,7 +22,10 @@ function App() {
 
             <Routes>
               <Route path="/map" element={<Map />} />
-              <Route path="/psychotypes" element={<Psychotypes filterChoose={filterChoose} />} />
+              <Route
+                path="/psychotypes"
+                element={<Psychotypes filterChoose={filterChoose} />}
+              />
             </Routes>
           </aside>
         </main>

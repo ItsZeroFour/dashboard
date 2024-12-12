@@ -3,8 +3,10 @@ import style from "./style.module.scss";
 import filter from "../../assets/icons/header/filter.svg";
 import bell from "../../assets/icons/header/bell.svg";
 import avatar from "../../assets/images/header/avatar.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as Calendar } from "../../assets/icons/map/calendar.svg";
+import { ReactComponent as List } from "../../assets/icons/psychotypes/list.svg";
+import { ReactComponent as Chart } from "../../assets/icons/psychotypes/chart-dots.svg";
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
@@ -12,6 +14,8 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
 const Header = ({ filterChoose, setFilterChoose }) => {
+  const location = useLocation();
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [backgroundStyle, setBackgroundStyle] = useState({});
   const [dateRange, setDateRange] = useState({
@@ -178,7 +182,24 @@ const Header = ({ filterChoose, setFilterChoose }) => {
           </div>
         </div>
 
-        <p>Location: Dubai. Area: JLT</p>
+        <div className={style.header__bottom}>
+          <p>Location: Dubai. Area: JLT</p>
+          {location.pathname === "/psychotypes" && (
+            <ul>
+              <li>
+                <button>
+                  <List />
+                </button>
+              </li>
+
+              <li>
+                <button>
+                  <Chart />
+                </button>
+              </li>
+            </ul>
+          )}
+        </div>
       </section>
     </header>
   );

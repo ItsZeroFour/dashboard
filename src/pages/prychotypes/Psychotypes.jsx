@@ -644,8 +644,8 @@ const Psychotypes = ({ filterChoose }) => {
           <section className={style.psychotypes}>
             <div className={style.psychotypes__item}>
               <div className={style.psychotypes__item__top}>
-                <h2>Users by psychotype</h2>
-                <p>8.52k</p>
+                <h2>Feelings starts</h2>
+                <p>562</p>
               </div>
 
               <table className={style.psychotypes__list}>

@@ -213,3 +213,40 @@
   left: -30%;
   z-index: 9;
 }
+
+.header__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 20px;
+}
+
+.header__bottom {
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    li {
+      button {
+        width: 35px;
+        height: 35px;
+        border-radius: 10px;
+
+        background: var(--color-gray-secondary);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        transition: all 0.2s ease;
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
