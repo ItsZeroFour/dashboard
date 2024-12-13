@@ -4,6 +4,7 @@ import Map from "./pages/map/Map";
 import Header from "./components/header/Header";
 import Psychotypes from "./pages/prychotypes/Psychotypes";
 import { useState } from "react";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
   const [filterChoose, setFilterChoose] = useState("all");
@@ -26,6 +27,7 @@ function App() {
                 path="/psychotypes"
                 element={<Psychotypes filterChoose={filterChoose} />}
               />
+              <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </aside>
         </main>
