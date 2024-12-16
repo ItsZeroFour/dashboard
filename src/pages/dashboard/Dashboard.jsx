@@ -4,7 +4,7 @@ import PopularConnent from "./PopularConnent";
 import Nationality from "./Nationality";
 import PsychotypesAndEvents from "./PsychotypesAndEvents";
 import Actions from "./Actions";
-import MostActiveSerment from "./MostActiveSerment";
+import MostActiveSerment from "./MostActiveSegment";
 import Connects from "./Connects";
 
 const Dashboard = () => {
