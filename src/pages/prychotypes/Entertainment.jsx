@@ -200,7 +200,7 @@ const Entertainment = () => {
               />
               <Tooltip />
               <Bar dataKey="value" barSize={40} radius={[5, 5, 5, 5]}>
-                {data.map((entry, index) => (
+                {barData.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
                     fill="#7367F0"

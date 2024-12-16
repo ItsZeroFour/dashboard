@@ -95,8 +95,6 @@ const ageData = [
   { name: "50+", value: 8000, color: "#26C6DA", offset: 15 },
 ];
 
-const ageCOLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-
 const General = () => {
   return (
     <section className={style.dashboard__general}>
