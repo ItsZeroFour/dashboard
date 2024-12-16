@@ -18,10 +18,10 @@ const CustomLabel1 = ({ x, y, value }) => (
 );
 
 const CustomLabel2 = ({ x, y, value }) => (
-    <text x={x + 37} y={y - 2} fill="#8c8c8c" fontSize="9" textAnchor="start">
-      {value} %
-    </text>
-  );
+  <text x={x + 37} y={y - 2} fill="#8c8c8c" fontSize="9" textAnchor="start">
+    {value} %
+  </text>
+);
 
 const connects = () => {
   const data = [
@@ -70,7 +70,6 @@ const connects = () => {
           >
             <XAxis type="number" hide /> {/* Скрываем оси */}
             <YAxis dataKey="name" type="category" hide />
-            <Tooltip />
             <Bar
               dataKey="orange"
               stackId="a"
