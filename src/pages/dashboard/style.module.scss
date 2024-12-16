@@ -3,7 +3,10 @@
 .nationality__county,
 .nationality__religions,
 .psychotypes,
-.actions__conversion {
+.actions__conversion,
+.actions__activity,
+.most_active_segment,
+.connects {
   background: var(--color-white);
   padding: 20px;
   border-radius: 40px;
@@ -666,12 +669,11 @@
 
 .psychotypes_and_events {
   display: flex;
-  justify-content: space-between;
   gap: 20px;
 }
 
 .events {
-  width: 100%;
+  width: 720px;
 
   display: flex;
   flex-direction: column;
@@ -700,6 +702,7 @@
 
     li {
       position: relative;
+      font-size: 14px;
 
       &::before {
         content: "";
@@ -754,10 +757,12 @@
 
 .actions {
   margin-top: 40px;
+  width: 91vw;
 }
 
 .actions__conversion__rate {
-  margin-right: 60px;
+  margin-left: -40px;
+  width: 100%;
 
   h3 {
     text-align: center;
@@ -886,4 +891,255 @@
       }
     }
   }
+}
+
+.actions__activity__top {
+  display: flex;
+  justify-content: space-between;
+
+  ul {
+    display: flex;
+    gap: 10px;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+
+      span {
+        font-size: 10px;
+        opacity: 0.5;
+        margin-left: 10px;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+
+          left: -13px;
+          top: 15%;
+
+          width: 8px;
+          height: 8px;
+
+          border-radius: 50%;
+        }
+      }
+
+      &:nth-child(1) {
+        span {
+          &::before {
+            background: #ffd643;
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        span {
+          &::before {
+            background: #0a84ff;
+          }
+        }
+      }
+
+      &:nth-child(3) {
+        span {
+          &::before {
+            background: #28c76f;
+          }
+        }
+      }
+
+      &:nth-child(4) {
+        span {
+          &::before {
+            background: #7367f0;
+          }
+        }
+      }
+
+      &:nth-child(5) {
+        span {
+          &::before {
+            background: #ff9f43;
+          }
+        }
+      }
+
+      &:nth-child(6) {
+        span {
+          &::before {
+            background: #28dac6;
+          }
+        }
+      }
+    }
+  }
+
+  button {
+    background: none;
+  }
+}
+
+.actions__activity {
+  margin-top: 40px;
+}
+
+.actions__activity__top {
+  position: relative;
+}
+
+.actions__activity__popup {
+  position: absolute;
+  background: var(--color-white);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
+  border-radius: 20px;
+  padding: 20px;
+
+  width: 270px;
+  height: 320px;
+
+  left: 73%;
+  top: 50%;
+
+  z-index: 99;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+      gap: 10px;
+      width: 100%;
+
+      select {
+        width: 100%;
+        padding: 10px;
+        height: 30px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+// most_active_segment
+
+.most_active_segment {
+  margin-top: 40px;
+}
+
+.most_active_segment__top {
+  display: flex;
+}
+
+.most_active_segment__top > ul {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+
+  li {
+    width: 290px;
+    ul {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      li {
+        display: flex;
+        font-size: 10px;
+
+        p {
+          &:first-child {
+            width: 80px;
+            opacity: 0.6;
+          }
+
+          &:last-child {
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.most_active_segment__item__top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+// connects
+
+.connects {
+  margin-top: 40px;
+}
+
+.connects__first {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 235px;
+
+  h3 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
+
+.connects__first__items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  li {
+    div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      div {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &:nth-child(1) {
+      div {
+        div {
+          background: rgba(255, 158, 67, 0.16);
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      div {
+        div {
+          background: rgba(114, 103, 240, 0.16);
+        }
+      }
+    }
+  }
+}
+
+.connects__first__items > li > p {
+  margin-left: 40px;
+  font-size: 12px;
 }

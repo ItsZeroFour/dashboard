@@ -4,6 +4,8 @@ import PopularConnent from "./PopularConnent";
 import Nationality from "./Nationality";
 import PsychotypesAndEvents from "./PsychotypesAndEvents";
 import Actions from "./Actions";
+import MostActiveSerment from "./MostActiveSerment";
+import Connects from "./Connects";
 
 const Dashboard = () => {
   return (
@@ -13,6 +15,8 @@ const Dashboard = () => {
       <PsychotypesAndEvents />
       <PopularConnent />
       <Actions />
+      <MostActiveSerment />
+      <Connects />
     </React.Fragment>
   );
 };

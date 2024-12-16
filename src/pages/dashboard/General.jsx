@@ -565,13 +565,13 @@ const General = () => {
               </div>
 
               <div>
-                <PieChart width={190} height={190}>
+                <PieChart width={170} height={170}>
                   <Pie
                     data={ageData}
-                    cx="55%"
+                    cx="50%"
                     cy="50%"
                     labelLine={false}
-                    outerRadius={87}
+                    outerRadius={85}
                     fill="#8884d8"
                     dataKey="value"
                   >

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./style.module.scss";
 import {
   BarChart,
@@ -7,13 +7,18 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
+  LineChart,
+  Line,
+  CartesianGrid,
 } from "recharts";
 import { ReactComponent as View } from "../../assets/icons/dashboard/actions/view.svg";
 import { ReactComponent as Check1 } from "../../assets/icons/dashboard/actions/check-circle.svg";
 import { ReactComponent as Check2 } from "../../assets/icons/dashboard/actions/check-circle-2.svg";
 import { ReactComponent as Walk } from "../../assets/icons/dashboard/actions/walk.svg";
+import { ReactComponent as More } from "../../assets/icons/dashboard/actions/more-vert.svg";
 
 const Actions = ({ percentage = 62.5, increment = 18.2 }) => {
+  const [showPopup, setShowPopup] = useState(false);
   const segments = 32;
 
   const activeSegments = Math.round((segments * percentage) / 100);
@@ -28,6 +33,22 @@ const Actions = ({ percentage = 62.5, increment = 18.2 }) => {
       yellow: 10, // Длина жёлтого сегмента
       purple: 20, // Длина фиолетового сегмента
     },
+  ];
+
+  const activityData = [
+    { date: "1/08", A: 150, B: 80, C: 60, D: 40, E: 20 },
+    { date: "3/08", A: 140, B: 100, C: 80, D: 50, E: 30 },
+    { date: "6/08", A: 200, B: 120, C: 60, D: 70, E: 20 },
+    { date: "9/08", A: 220, B: 150, C: 100, D: 90, E: 30 },
+    { date: "12/08", A: 170, B: 80, C: 90, D: 60, E: 40 },
+    { date: "15/08", A: 150, B: 110, C: 70, D: 50, E: 30 },
+    { date: "18/08", A: 180, B: 140, C: 110, D: 80, E: 50 },
+    { date: "21/08", A: 230, B: 170, C: 120, D: 100, E: 60 },
+    { date: "24/08", A: 210, B: 160, C: 100, D: 90, E: 80 },
+    { date: "27/08", A: 190, B: 150, C: 80, D: 70, E: 60 },
+    { date: "30/08", A: 200, B: 180, C: 120, D: 80, E: 50 },
+    { date: "2/09", A: 250, B: 200, C: 100, D: 90, E: 40 },
+    { date: "5/09", A: 320, B: 220, C: 130, D: 120, E: 80 },
   ];
 
   return (
@@ -200,6 +221,144 @@ const Actions = ({ percentage = 62.5, increment = 18.2 }) => {
             </div>
           </div>
         </div>
+      </aside>
+
+      <aside className={style.actions__activity}>
+        <div className={style.actions__activity__top}>
+          <h3>Activity monitoring</h3>
+
+          <ul>
+            {[
+              {
+                count: 7840,
+                name: "Feedbacks",
+              },
+
+              {
+                count: 7840,
+                name: "Bookings",
+              },
+
+              {
+                count: 7840,
+                name: "Favorites adds",
+              },
+
+              {
+                count: 7840,
+                name: "App opens",
+              },
+
+              {
+                count: 7840,
+                name: "Connects",
+              },
+
+              {
+                count: 7840,
+                name: "Video-reactions",
+              },
+            ].map(({ count, name }, index) => (
+              <li key={name}>
+                <input type="checkbox" id={`actions-${index}`} />
+                <label htmlFor={`actions-${index}`}>
+                  <p>
+                    {count > 0 && "+"}
+                    {new Intl.NumberFormat("en").format(count)}
+                  </p>
+                  <span>{name}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
+
+          <button onClick={() => setShowPopup(!showPopup)}>
+            <More />
+          </button>
+
+          {showPopup && (
+            <div className={style.actions__activity__popup}>
+              <ul>
+                <li>
+                  <p>Country of origin</p>
+                  <select>
+                    <option value="India">India</option>
+                    <option value="India">India</option>
+                    <option value="India">India</option>
+                  </select>
+                </li>
+
+                <li>
+                  <p>Psychotype</p>
+                  <select>
+                    <option value="Foodie">Foodie</option>
+                    <option value="Foodie">Foodie</option>
+                    <option value="Foodie">Foodie</option>
+                  </select>
+                </li>
+
+                <li>
+                  <p>Age</p>
+                  <select>
+                    <option value="18 - 24">18 - 24</option>
+                    <option value="18 - 24">18 - 24</option>
+                    <option value="18 - 24">18 - 24</option>
+                  </select>
+                </li>
+
+                <li>
+                  <p>Gender</p>
+                  <select>
+                    <option value="male">male</option>
+                    <option value="male">male</option>
+                    <option value="male">male</option>
+                  </select>
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
+        <ResponsiveContainer width="100%" height={400}>
+          <LineChart
+            data={activityData}
+            margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
+          >
+            <CartesianGrid strokeDasharray="1 0" />
+            <XAxis dataKey="date" fontSize={10} />
+            <YAxis domain={[0, 400]} fontSize={10} />
+            <Tooltip />
+            <Line
+              type="monotone"
+              dataKey="A"
+              stroke="#8B5CF6"
+              strokeWidth={3}
+            />
+            <Line
+              type="monotone"
+              dataKey="B"
+              stroke="#22C55E"
+              strokeWidth={3}
+            />
+            <Line
+              type="monotone"
+              dataKey="C"
+              stroke="#3B82F6"
+              strokeWidth={3}
+            />
+            <Line
+              type="monotone"
+              dataKey="D"
+              stroke="#FACC15"
+              strokeWidth={3}
+            />
+            <Line
+              type="monotone"
+              dataKey="E"
+              stroke="#FB923C"
+              strokeWidth={3}
+            />
+          </LineChart>
+        </ResponsiveContainer>
       </aside>
     </section>
   );
