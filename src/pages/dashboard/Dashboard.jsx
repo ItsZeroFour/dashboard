@@ -6,6 +6,7 @@ import PsychotypesAndEvents from "./PsychotypesAndEvents";
 import Actions from "./Actions";
 import MostActiveSerment from "./MostActiveSegment";
 import Connects from "./Connects";
+import Dynamics from "./Dynamics";
 
 const Dashboard = () => {
   return (
@@ -17,6 +18,7 @@ const Dashboard = () => {
       <Actions />
       <MostActiveSerment />
       <Connects />
+      <Dynamics />
     </React.Fragment>
   );
 };

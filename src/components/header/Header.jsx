@@ -17,7 +17,9 @@ const Header = ({ filterChoose, setFilterChoose }) => {
   const location = useLocation();
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex2, setActiveIndex2] = useState(0);
   const [backgroundStyle, setBackgroundStyle] = useState({});
+  const [backgroundStyle2, setBackgroundStyle2] = useState({});
   const [dateRange, setDateRange] = useState({
     startDate: new Date(),
     endDate: new Date(),
@@ -31,6 +33,7 @@ const Header = ({ filterChoose, setFilterChoose }) => {
   };
 
   const navRef = useRef(null);
+  const navRef2 = useRef(null);
 
   const updateBackgroundPosition = (index) => {
     if (!navRef.current) return;
@@ -52,13 +55,32 @@ const Header = ({ filterChoose, setFilterChoose }) => {
     });
   };
 
-  useEffect(() => {
-    updateBackgroundPosition(activeIndex);
-  }, [activeIndex]);
+  const updateBackgroundPosition2 = (index) => {
+    if (!navRef.current) return;
+    const nav = navRef.current;
+    const buttons = nav.querySelectorAll("button");
+
+    if (!buttons || !buttons[index]) return;
+    const button = buttons[index];
+    const navRect = nav.getBoundingClientRect();
+    const buttonRect = button.getBoundingClientRect();
+
+    const offsetX = buttonRect.left - navRect.left;
+    const offsetY = buttonRect.top - navRect.top;
+
+    setBackgroundStyle2({
+      transform: `translate(${
+        index === 1 ? offsetX + 30 : index === 2 ? offsetX + 55 : offsetX + 5
+      }px, ${offsetY}px)`,
+      width: `${buttonRect.width + 50}px`,
+      height: `${buttonRect.height}px`,
+    });
+  };
 
   useEffect(() => {
     updateBackgroundPosition(activeIndex);
-  }, []);
+    updateBackgroundPosition2(activeIndex2);
+  }, [activeIndex, activeIndex2]);
 
   return (
     <header className={style.header}>
@@ -103,7 +125,7 @@ const Header = ({ filterChoose, setFilterChoose }) => {
                     className={index === activeIndex ? style.current : ""}
                     onClick={() => setActiveIndex(index)}
                   >
-                    {label}
+                    <p className={style.map__upper}>{label}</p>
                   </button>
                 </li>
               ))}
@@ -182,7 +204,13 @@ const Header = ({ filterChoose, setFilterChoose }) => {
           </div>
         </div>
 
-        <div className={style.header__bottom}>
+        <div
+          className={
+            location.pathname === "/dashboard"
+              ? `${style.header__bottom} ${style.header__bottom__spec}`
+              : style.header__bottom
+          }
+        >
           <p>Location: Dubai. Area: JLT</p>
           {location.pathname === "/psychotypes" && (
             <ul>
@@ -197,6 +225,25 @@ const Header = ({ filterChoose, setFilterChoose }) => {
                   <Chart />
                 </button>
               </li>
+            </ul>
+          )}
+
+          {location.pathname === "/dashboard" && (
+            <ul
+              className={`${style.map__top__nav__list_1} ${style.map__top__nav__list_2}`}
+              ref={navRef2}
+            >
+              <div className={style.background} style={backgroundStyle2} />
+              {["General", "Organic", "Promotion"].map((label, index) => (
+                <li key={index}>
+                  <button
+                    className={index === activeIndex2 ? style.current : ""}
+                    onClick={() => setActiveIndex2(index)}
+                  >
+                    <p className={style.map__upper}>{label}</p>
+                  </button>
+                </li>
+              ))}
             </ul>
           )}
         </div>

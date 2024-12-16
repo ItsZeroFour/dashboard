@@ -48,7 +48,7 @@ const Nationality = () => {
       <div className={style.nationality__county}>
         <h3>Country coverage</h3>
 
-        <ResponsiveContainer width={515} height={400}>
+        <ResponsiveContainer width={585} height={400}>
           <BarChart
             data={countrys}
             margin={{ top: 50, right: 20, left: 20, bottom: 55 }}
@@ -97,7 +97,7 @@ const Nationality = () => {
       <div className={style.nationality__religions}>
         <h3>Religion</h3>
 
-        <ResponsiveContainer width={515} height={400}>
+        <ResponsiveContainer width={585} height={400}>
           <BarChart
             data={religions}
             margin={{ top: 50, right: 20, left: 20, bottom: 55 }}
