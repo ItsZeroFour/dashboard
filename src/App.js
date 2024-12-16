@@ -11,27 +11,35 @@ function App() {
 
   return (
     <div className="page">
-      <div className="container">
-        <main className="wrapper">
-          <Nav />
+      {window.innerWidth >= 1439 ? (
+        <div className="container">
+          <main className="wrapper">
+            <Nav />
 
-          <aside className="main__side">
-            <Header
-              filterChoose={filterChoose}
-              setFilterChoose={setFilterChoose}
-            />
-
-            <Routes>
-              <Route path="/map" element={<Map />} />
-              <Route
-                path="/psychotypes"
-                element={<Psychotypes filterChoose={filterChoose} />}
+            <aside className="main__side">
+              <Header
+                filterChoose={filterChoose}
+                setFilterChoose={setFilterChoose}
               />
-              <Route path="/dashboard" element={<Dashboard />} />
-            </Routes>
-          </aside>
-        </main>
-      </div>
+
+              <Routes>
+                <Route path="/map" element={<Map />} />
+                <Route
+                  path="/psychotypes"
+                  element={<Psychotypes filterChoose={filterChoose} />}
+                />
+                <Route path="/dashboard" element={<Dashboard />} />
+              </Routes>
+            </aside>
+          </main>
+        </div>
+      ) : (
+        <div className="notification">
+          <div>
+            <h1>Извините, но сайт доступен только для ПК и ноутбуков</h1>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
