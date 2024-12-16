@@ -1,8 +1,9 @@
 import React from "react";
-import style from "./style.module.scss";
 import General from "./General";
+import PopularConnent from "./PopularConnent";
 import Nationality from "./Nationality";
 import PsychotypesAndEvents from "./PsychotypesAndEvents";
+import Actions from "./Actions";
 
 const Dashboard = () => {
   return (
@@ -10,6 +11,8 @@ const Dashboard = () => {
       <General />
       <Nationality />
       <PsychotypesAndEvents />
+      <PopularConnent />
+      <Actions />
     </React.Fragment>
   );
 };

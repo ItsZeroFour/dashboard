@@ -9,10 +9,11 @@ import { ReactComponent as Ad } from "../../assets/icons/nav/ad.svg";
 import { ReactComponent as Trash } from "../../assets/icons/nav/trash.svg";
 import { ReactComponent as Archive } from "../../assets/icons/nav/archive.svg";
 import { ReactComponent as Settings } from "../../assets/icons/nav/settings.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Nav = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const navList1 = [
     {
@@ -77,7 +78,10 @@ const Nav = () => {
           </li>
 
           {navList1.map(({ link, icon, name }) => (
-            <li key={name}>
+            <li
+              key={name}
+              className={location.pathname === link && style.nav__active}
+            >
               <Link to={link}>{icon}</Link>
             </li>
           ))}

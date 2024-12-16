@@ -4,20 +4,17 @@ import { ReactComponent as Star1 } from "../../assets/icons/dashboard/general/st
 import { ReactComponent as Exclamation } from "../../assets/icons/dashboard/general/exclamation.svg";
 import { ReactComponent as Dollar } from "../../assets/icons/dashboard/general/dollar.svg";
 import { ReactComponent as Star2 } from "../../assets/icons/dashboard/general/star-fill.svg";
-import { Paper, Typography, Box } from "@mui/material";
 
 import {
   RadialBarChart,
   RadialBar,
-  Legend,
-  PolarAngleAxis,
   Tooltip,
   PieChart,
   Pie,
   Cell,
-  ResponsiveContainer,
-  Sector,
 } from "recharts";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 /* Gender */
 
@@ -96,461 +93,500 @@ const ageData = [
 ];
 
 const General = () => {
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  });
+
   return (
-    <section className={style.dashboard__general}>
+    <section className={style.dashboard__general} ref={ref}>
       <h2>General Statistics</h2>
 
-      <div className={style.dashboard__general__app}>
-        <div className={style.dashboard__general__app__main}>
-          <h3>App Analytics</h3>
-
-          <ul>
-            <li>
-              <div>
-                <h4>47k</h4>
-              </div>
-              <p>Total users</p>
-            </li>
-
-            <li>
-              <div>
-                <h4>1.1k</h4>
-              </div>
-              <p>New members</p>
-            </li>
-
-            <li>
-              <div>
-                <h4>8.1k</h4>
-              </div>
-              <p>Invitations sent</p>
-            </li>
-
-            <li>
-              <div>
-                <h4>2.2k</h4>
-              </div>
-              <p>User loss</p>
-            </li>
-          </ul>
-        </div>
-
-        <ul className={style.dashboard__general__app__statistics}>
-          <li>
-            <div
-              className={style.dashboard__general__app__statistics__item__title}
-            >
-              <Star1 />
-              <p>Premium</p>
-            </div>
-
-            <div
-              className={
-                style.dashboard__general__app__statistics__item__statistics
-              }
-            >
-              <div>
-                <p>15k</p>
-                <p>+1.3k</p>
-              </div>
-
-              <div>
-                <p>31%</p>
-                <p>+1.3k</p>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div
-              className={style.dashboard__general__app__statistics__item__title}
-            >
-              <Exclamation />
-              <p>Premium</p>
-            </div>
-
-            <div
-              className={
-                style.dashboard__general__app__statistics__item__statistics
-              }
-            >
-              <div>
-                <p>15k</p>
-                <p>+1.3k</p>
-              </div>
-
-              <div>
-                <p>31%</p>
-                <p>+1.3k</p>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div
-              className={style.dashboard__general__app__statistics__item__title}
-            >
-              <Dollar />
-              <p>Premium</p>
-            </div>
-
-            <div
-              className={
-                style.dashboard__general__app__statistics__item__statistics
-              }
-            >
-              <div>
-                <p>15k</p>
-                <p>+1.3k</p>
-              </div>
-
-              <div>
-                <p>31%</p>
-                <p>+1.3k</p>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div
-              className={style.dashboard__general__app__statistics__item__title}
-            >
-              <Star2 />
-              <p>Premium</p>
-            </div>
-
-            <div
-              className={
-                style.dashboard__general__app__statistics__item__statistics
-              }
-            >
-              <div>
-                <p>15k</p>
-                <p>+1.3k</p>
-              </div>
-
-              <div>
-                <p>31%</p>
-                <p>+1.3k</p>
-              </div>
-            </div>
-          </li>
-        </ul>
-
-        <div className={style.dashboard__general__app__graph}>
-          <RadialBarChart
-            width={470}
-            height={440}
-            cx="50%"
-            cy="47%"
-            innerRadius="35%"
-            outerRadius="100%"
-            barSize={10}
-            data={data}
-            startAngle={180}
-            endAngle={0}
+      {inView && (
+        <React.Fragment>
+          <motion.div
+            className={style.dashboard__general__app}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
           >
-            <Tooltip
-              formatter={(value, name, props) => {
-                return [`Value: ${value};`, `Category: ${props.payload.name}`];
-              }}
-              contentStyle={{
-                backgroundColor: "#fff",
-                border: "1px solid #ccc",
-                borderRadius: "5px",
-              }}
-              labelStyle={{ fontWeight: "bold" }}
-            />
-            <RadialBar
-              minAngle={5}
-              background
-              clockWise
-              dataKey="value"
-              cornerRadius={5}
-            />
-            <text
-              x="50%"
-              y="39%"
-              textAnchor="middle"
-              dominantBaseline="middle"
-              style={{ fontSize: "20px", fontWeight: "bold" }}
-            >
-              47k
-            </text>
-            <text
-              x="50%"
-              y="43%"
-              textAnchor="middle"
-              dominantBaseline="middle"
-              style={{ fontSize: "12px", fill: "green" }}
-            >
-              +520
-            </text>
-          </RadialBarChart>
-        </div>
-      </div>
-
-      <div className={style.dashboard__general__people}>
-        <div className={style.dashboard__general__people__left}>
-          <div className={style.dashboard__general__people__gender}>
-            <div className={style.dashboard__general__people__gender__left}>
-              <h3>Gender</h3>
-              <ul>
-                <li>Male</li>
-                <li>Female</li>
-                <li>Other</li>
-              </ul>
-            </div>
-
-            <div className={style.dashboard__general__people__gender__right}>
-              <div
-                style={{
-                  width: "200px",
-                  height: "200px",
-                  position: "relative",
-                }}
-              >
-                <PieChart width={200} height={200}>
-                  <Pie
-                    data={dataGender}
-                    innerRadius={80} // Внутренний радиус (для кольцевой формы)
-                    outerRadius={90} // Внешний радиус
-                    startAngle={90} // Начало рисования
-                    endAngle={-270} // Конец рисования (обратный ход)
-                    fill="#8884d8"
-                    dataKey="value"
-                    cornerRadius={5} // Закруглённые углы
-                  >
-                    {data.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index]} />
-                    ))}
-                  </Pie>
-                </PieChart>
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    textAlign: "center",
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                  }}
-                >
-                  45%
-                  <div style={{ fontSize: "16px", color: "#999" }}>21,2k</div>
-                </div>
-              </div>
-
-              <div
-                style={{
-                  width: "200px",
-                  height: "200px",
-                  position: "relative",
-                }}
-              >
-                <PieChart width={200} height={200}>
-                  <Pie
-                    data={dataGender1}
-                    innerRadius={80} // Внутренний радиус (для кольцевой формы)
-                    outerRadius={90} // Внешний радиус
-                    startAngle={90} // Начало рисования
-                    endAngle={-270} // Конец рисования (обратный ход)
-                    fill="#8884d8"
-                    dataKey="value"
-                    cornerRadius={5} // Закруглённые углы
-                  >
-                    {data.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS1[index]} />
-                    ))}
-                  </Pie>
-                </PieChart>
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    textAlign: "center",
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                  }}
-                >
-                  35%
-                  <div style={{ fontSize: "16px", color: "#999" }}>16,5k</div>
-                </div>
-              </div>
-
-              <div
-                style={{
-                  width: "200px",
-                  height: "200px",
-                  position: "relative",
-                }}
-              >
-                <PieChart width={200} height={200}>
-                  <Pie
-                    data={dataGender2}
-                    innerRadius={80} // Внутренний радиус (для кольцевой формы)
-                    outerRadius={90} // Внешний радиус
-                    startAngle={90} // Начало рисования
-                    endAngle={-270} // Конец рисования (обратный ход)
-                    fill="#8884d8"
-                    dataKey="value"
-                    cornerRadius={5} // Закруглённые углы
-                  >
-                    {data.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS2[index]} />
-                    ))}
-                  </Pie>
-                </PieChart>
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    textAlign: "center",
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                  }}
-                >
-                  20%
-                  <div style={{ fontSize: "16px", color: "#999" }}>9,4k</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className={style.dashboard__general__people__device}>
-            <div className={style.dashboard__general__people__device__info}>
-              <h3>Device type</h3>
+            <div className={style.dashboard__general__app__main}>
+              <h3>App Analytics</h3>
 
               <ul>
                 <li>
-                  <p>iOS</p>
+                  <div>
+                    <h4>47k</h4>
+                  </div>
+                  <p>Total users</p>
                 </li>
 
                 <li>
-                  <p>Android</p>
+                  <div>
+                    <h4>1.1k</h4>
+                  </div>
+                  <p>New members</p>
                 </li>
 
                 <li>
-                  <p>Huawei</p>
+                  <div>
+                    <h4>8.1k</h4>
+                  </div>
+                  <p>Invitations sent</p>
                 </li>
 
                 <li>
-                  <p>Other</p>
+                  <div>
+                    <h4>2.2k</h4>
+                  </div>
+                  <p>User loss</p>
                 </li>
               </ul>
             </div>
 
-            <div>
-              <PieChart width={200} height={200}>
-                {" "}
-                {/* Увеличили ширину и высоту */}
-                <Pie
-                  data={deviceData}
-                  cx={100} // Центр X (середина width)
-                  cy={100} // Центр Y (середина height)
-                  innerRadius={70} // Внутренний радиус (увеличили)
-                  outerRadius={95} // Внешний радиус (увеличили)
-                  fill="#8884d8"
-                  paddingAngle={0}
-                  dataKey="value"
+            <ul className={style.dashboard__general__app__statistics}>
+              <li>
+                <div
+                  className={
+                    style.dashboard__general__app__statistics__item__title
+                  }
                 >
-                  {data.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={deviceCOLORS[index]} />
-                  ))}
-                </Pie>
-                <Tooltip />
-                {/* Корректируем текстовые элементы */}
-                <svg>
-                  <text
-                    x={105} // Корректируем позицию текста под центр
-                    y={100}
-                    textAnchor="middle"
-                    dominantBaseline="central"
-                    fontSize="14" // Увеличили шрифт
-                    fontWeight="bold"
-                  >
-                    8.52k
-                  </text>
+                  <Star1 />
+                  <p>Premium</p>
+                </div>
 
-                  <text
-                    x={105}
-                    y={115}
-                    textAnchor="middle"
-                    dominantBaseline="central"
-                    fontSize="10" // Увеличили шрифт
-                    fontWeight="regular"
-                  >
-                    Total
-                  </text>
-                </svg>
-              </PieChart>
-            </div>
-          </div>
-        </div>
+                <div
+                  className={
+                    style.dashboard__general__app__statistics__item__statistics
+                  }
+                >
+                  <div>
+                    <p>15k</p>
+                    <p>+1.3k</p>
+                  </div>
 
-        <div className={style.dashboard__general__people__right}>
-          <div className={style.dashboard__general__people__age}>
-            <div className={style.dashboard__general__people__age__top}>
-              <h3>Age range</h3>
-              <p>
-                <span>47k</span> total users
-              </p>
-            </div>
-
-            <ul>
-              <li>
-                <p>18 - 24</p>
-                <span>150</span>
+                  <div>
+                    <p>31%</p>
+                    <p>+1.3k</p>
+                  </div>
+                </div>
               </li>
 
               <li>
-                <p>25 - 35</p>
-                <span>350</span>
+                <div
+                  className={
+                    style.dashboard__general__app__statistics__item__title
+                  }
+                >
+                  <Exclamation />
+                  <p>Premium</p>
+                </div>
+
+                <div
+                  className={
+                    style.dashboard__general__app__statistics__item__statistics
+                  }
+                >
+                  <div>
+                    <p>15k</p>
+                    <p>+1.3k</p>
+                  </div>
+
+                  <div>
+                    <p>31%</p>
+                    <p>+1.3k</p>
+                  </div>
+                </div>
               </li>
 
               <li>
-                <p>36 - 45</p>
-                <span>1.500</span>
+                <div
+                  className={
+                    style.dashboard__general__app__statistics__item__title
+                  }
+                >
+                  <Dollar />
+                  <p>Premium</p>
+                </div>
+
+                <div
+                  className={
+                    style.dashboard__general__app__statistics__item__statistics
+                  }
+                >
+                  <div>
+                    <p>15k</p>
+                    <p>+1.3k</p>
+                  </div>
+
+                  <div>
+                    <p>31%</p>
+                    <p>+1.3k</p>
+                  </div>
+                </div>
               </li>
 
               <li>
-                <p>45 - 50</p>
-                <span>4.555</span>
-              </li>
+                <div
+                  className={
+                    style.dashboard__general__app__statistics__item__title
+                  }
+                >
+                  <Star2 />
+                  <p>Premium</p>
+                </div>
 
-              <li>
-                <p>50+</p>
-                <span>8.000</span>
+                <div
+                  className={
+                    style.dashboard__general__app__statistics__item__statistics
+                  }
+                >
+                  <div>
+                    <p>15k</p>
+                    <p>+1.3k</p>
+                  </div>
+
+                  <div>
+                    <p>31%</p>
+                    <p>+1.3k</p>
+                  </div>
+                </div>
               </li>
             </ul>
-          </div>
 
-          <div>
-            <PieChart width={240} height={240}>
-              <Pie
-                data={ageData}
-                cx="55%"
-                cy="50%"
-                labelLine={false}
-                outerRadius={105}
-                fill="#8884d8"
-                dataKey="value"
+            <div className={style.dashboard__general__app__graph}>
+              <RadialBarChart
+                width={470}
+                height={440}
+                cx="50%"
+                cy="47%"
+                innerRadius="35%"
+                outerRadius="100%"
+                barSize={10}
+                data={data}
+                startAngle={180}
+                endAngle={0}
               >
-                {ageData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Pie>
+                <Tooltip
+                  formatter={(value, name, props) => {
+                    return [
+                      `Value: ${value};`,
+                      `Category: ${props.payload.name}`,
+                    ];
+                  }}
+                  contentStyle={{
+                    backgroundColor: "#fff",
+                    border: "1px solid #ccc",
+                    borderRadius: "5px",
+                  }}
+                  labelStyle={{ fontWeight: "bold" }}
+                />
+                <RadialBar
+                  minAngle={5}
+                  background
+                  clockWise
+                  dataKey="value"
+                  cornerRadius={5}
+                />
+                <text
+                  x="50%"
+                  y="39%"
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  style={{ fontSize: "20px", fontWeight: "bold" }}
+                >
+                  47k
+                </text>
+                <text
+                  x="50%"
+                  y="43%"
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  style={{ fontSize: "12px", fill: "green" }}
+                >
+                  +520
+                </text>
+              </RadialBarChart>
+            </div>
+          </motion.div>
 
-              <Tooltip />
-            </PieChart>
-          </div>
-        </div>
-      </div>
+          <motion.div
+            className={style.dashboard__general__people}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+          >
+            <div className={style.dashboard__general__people__left}>
+              <div className={style.dashboard__general__people__gender}>
+                <div className={style.dashboard__general__people__gender__left}>
+                  <h3>Gender</h3>
+                  <ul>
+                    <li>Male</li>
+                    <li>Female</li>
+                    <li>Other</li>
+                  </ul>
+                </div>
+
+                <div
+                  className={style.dashboard__general__people__gender__right}
+                >
+                  <div
+                    style={{
+                      width: "200px",
+                      height: "200px",
+                      position: "relative",
+                    }}
+                  >
+                    <PieChart width={200} height={200}>
+                      <Pie
+                        data={dataGender}
+                        innerRadius={80} // Внутренний радиус (для кольцевой формы)
+                        outerRadius={90} // Внешний радиус
+                        startAngle={90} // Начало рисования
+                        endAngle={-270} // Конец рисования (обратный ход)
+                        fill="#8884d8"
+                        dataKey="value"
+                        cornerRadius={5} // Закруглённые углы
+                      >
+                        {data.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={COLORS[index]} />
+                        ))}
+                      </Pie>
+                    </PieChart>
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        textAlign: "center",
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      45%
+                      <div style={{ fontSize: "16px", color: "#999" }}>
+                        21,2k
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      width: "200px",
+                      height: "200px",
+                      position: "relative",
+                    }}
+                  >
+                    <PieChart width={200} height={200}>
+                      <Pie
+                        data={dataGender1}
+                        innerRadius={80} // Внутренний радиус (для кольцевой формы)
+                        outerRadius={90} // Внешний радиус
+                        startAngle={90} // Начало рисования
+                        endAngle={-270} // Конец рисования (обратный ход)
+                        fill="#8884d8"
+                        dataKey="value"
+                        cornerRadius={5} // Закруглённые углы
+                      >
+                        {data.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={COLORS1[index]} />
+                        ))}
+                      </Pie>
+                    </PieChart>
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        textAlign: "center",
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      35%
+                      <div style={{ fontSize: "16px", color: "#999" }}>
+                        16,5k
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      width: "200px",
+                      height: "200px",
+                      position: "relative",
+                    }}
+                  >
+                    <PieChart width={200} height={200}>
+                      <Pie
+                        data={dataGender2}
+                        innerRadius={80} // Внутренний радиус (для кольцевой формы)
+                        outerRadius={90} // Внешний радиус
+                        startAngle={90} // Начало рисования
+                        endAngle={-270} // Конец рисования (обратный ход)
+                        fill="#8884d8"
+                        dataKey="value"
+                        cornerRadius={5} // Закруглённые углы
+                      >
+                        {data.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={COLORS2[index]} />
+                        ))}
+                      </Pie>
+                    </PieChart>
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        textAlign: "center",
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      20%
+                      <div style={{ fontSize: "16px", color: "#999" }}>
+                        9,4k
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className={style.dashboard__general__people__device}>
+                <div className={style.dashboard__general__people__device__info}>
+                  <h3>Device type</h3>
+
+                  <ul>
+                    <li>
+                      <p>iOS</p>
+                    </li>
+
+                    <li>
+                      <p>Android</p>
+                    </li>
+
+                    <li>
+                      <p>Huawei</p>
+                    </li>
+
+                    <li>
+                      <p>Other</p>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <PieChart width={200} height={200}>
+                    {" "}
+                    {/* Увеличили ширину и высоту */}
+                    <Pie
+                      data={deviceData}
+                      cx={100} // Центр X (середина width)
+                      cy={100} // Центр Y (середина height)
+                      innerRadius={70} // Внутренний радиус (увеличили)
+                      outerRadius={95} // Внешний радиус (увеличили)
+                      fill="#8884d8"
+                      paddingAngle={0}
+                      dataKey="value"
+                    >
+                      {data.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={deviceCOLORS[index]}
+                        />
+                      ))}
+                    </Pie>
+                    <Tooltip />
+                    {/* Корректируем текстовые элементы */}
+                    <svg>
+                      <text
+                        x={105} // Корректируем позицию текста под центр
+                        y={100}
+                        textAnchor="middle"
+                        dominantBaseline="central"
+                        fontSize="14" // Увеличили шрифт
+                        fontWeight="bold"
+                      >
+                        8.52k
+                      </text>
+
+                      <text
+                        x={105}
+                        y={115}
+                        textAnchor="middle"
+                        dominantBaseline="central"
+                        fontSize="10" // Увеличили шрифт
+                        fontWeight="regular"
+                      >
+                        Total
+                      </text>
+                    </svg>
+                  </PieChart>
+                </div>
+              </div>
+            </div>
+
+            <div className={style.dashboard__general__people__right}>
+              <div className={style.dashboard__general__people__age}>
+                <div className={style.dashboard__general__people__age__top}>
+                  <h3>Age range</h3>
+                  <p>
+                    <span>47k</span> total users
+                  </p>
+                </div>
+
+                <ul>
+                  <li>
+                    <p>18 - 24</p>
+                    <span>150</span>
+                  </li>
+
+                  <li>
+                    <p>25 - 35</p>
+                    <span>350</span>
+                  </li>
+
+                  <li>
+                    <p>36 - 45</p>
+                    <span>1.500</span>
+                  </li>
+
+                  <li>
+                    <p>45 - 50</p>
+                    <span>4.555</span>
+                  </li>
+
+                  <li>
+                    <p>50+</p>
+                    <span>8.000</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <PieChart width={190} height={190}>
+                  <Pie
+                    data={ageData}
+                    cx="55%"
+                    cy="50%"
+                    labelLine={false}
+                    outerRadius={87}
+                    fill="#8884d8"
+                    dataKey="value"
+                  >
+                    {ageData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+
+                  <Tooltip />
+                </PieChart>
+              </div>
+            </div>
+          </motion.div>
+        </React.Fragment>
+      )}
     </section>
   );
 };
