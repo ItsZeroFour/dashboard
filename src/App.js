@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="page">
-      {window.innerWidth >= 1439 ? (
+      {window.innerWidth >= 1023 ? (
         <div className="container">
           <main className="wrapper">
             <Nav />
