@@ -54,14 +54,14 @@
       h4 {
         font-size: 12px;
         background: var(--color-white);
-        padding: 5px 10px;
-        border-radius: 3px;
+        padding: 5.008px 10px;
+        border-radius: 3.008px;
         color: var(--color-violet);
       }
 
       p {
         font-size: 10px;
-        margin-top: 5px;
+        margin-top: 5.008px;
       }
     }
   }
@@ -84,7 +84,7 @@
 
   li {
     width: 170px;
-    height: 103px;
+    height: 103.008px;
 
     background: var(--color-white);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
@@ -97,11 +97,11 @@
 
     .dashboard__general__app__statistics__item__title {
       display: flex;
-      gap: 5px;
+      gap: 5.008px;
     }
 
     .dashboard__general__app__statistics__item__statistics {
-      margin-left: 15px;
+      margin-left: 15.008px;
 
       div {
         display: flex;
@@ -150,7 +150,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-left: 15px;
+    margin-left: 15.008px;
     li {
       color: #2d3645;
       position: relative;
@@ -162,8 +162,8 @@
         left: -15%;
         top: 30%;
 
-        width: 5px;
-        height: 5px;
+        width: 5.008px;
+        height: 5.008px;
         border-radius: 50%;
       }
 
@@ -221,8 +221,8 @@
         left: 0;
         top: 30%;
 
-        width: 5px;
-        height: 5px;
+        width: 5.008px;
+        height: 5.008px;
         border-radius: 50%;
         background: #ff9f43;
       }
@@ -282,8 +282,8 @@
       left: 0px;
       top: 30%;
 
-      width: 5px;
-      height: 5px;
+      width: 5.008px;
+      height: 5.008px;
       border-radius: 50%;
     }
 
@@ -388,21 +388,21 @@
 
 .psychotypes__top__graphick__line {
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 5.008px;
+  left: 5.008px;
 
   width: 100%;
   height: 10px;
 
   background-color: #f1f1f1;
-  border-radius: 5px;
+  border-radius: 5.008px;
 }
 
 .psychotypes__top {
   p {
     opacity: 0.6;
     font-size: 16px;
-    margin-top: 5px;
+    margin-top: 5.008px;
   }
 }
 
@@ -456,21 +456,21 @@
 
 .psychotypes__top__graphick__line {
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 5.008px;
+  left: 5.008px;
 
   width: 100%;
   height: 10px;
 
   background-color: #f1f1f1;
-  border-radius: 5px;
+  border-radius: 5.008px;
 }
 
 .psychotypes__top {
   p {
     opacity: 0.6;
     font-size: 16px;
-    margin-top: 5px;
+    margin-top: 5.008px;
   }
 }
 
@@ -490,7 +490,7 @@
   background: var(--color-white);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
   border-radius: 30px;
-  border: 1px solid #efefef;
+  border: 1.008px solid #efefef;
 
   ul {
     display: flex;
@@ -504,7 +504,7 @@
       gap: 30px;
       cursor: pointer;
       transition: all 0.4s ease;
-      padding: 20px 5px;
+      padding: 20px 5.008px;
 
       &:hover {
         background: rgba(219, 219, 219, 0.3);
@@ -595,7 +595,7 @@
         .popular_content__active__name {
           display: flex;
           flex-direction: column;
-          width: 205px;
+          width: 205.008px;
 
           p {
             font-size: 12px;
@@ -605,8 +605,8 @@
           div {
             display: flex;
             align-items: center;
-            margin-top: 5px;
-            gap: 5px;
+            margin-top: 5.008px;
+            gap: 5.008px;
 
             p {
               opacity: 1;
@@ -656,7 +656,7 @@
 }
 
 .popular_content__button__active {
-  border: 1px solid #efefef;
+  border: 1.008px solid #efefef;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -718,7 +718,7 @@
       }
 
       &:not(:first-child) {
-        padding-left: 15px;
+        padding-left: 15.008px;
       }
 
       &:nth-child(2) {
@@ -792,13 +792,13 @@
     display: flex;
 
     li {
-      width: 225px;
+      width: 225.008px;
       padding: 0px 40px;
       position: relative;
 
       &:not(:first-child) {
-        border-left: 1px solid rgba(0, 0, 0, 0.3);
-        border-right: 1px solid rgba(0, 0, 0, 0.3);
+        border-left: 1.008px solid rgba(0, 0, 0, 0.3);
+        border-right: 1.008px solid rgba(0, 0, 0, 0.3);
       }
 
       &:last-child {
@@ -826,7 +826,7 @@
 
         background: rgb(232, 231, 249);
         border-radius: 50%;
-        border: 5px solid #fff;
+        border: 5.008px solid #fff;
 
         z-index: 1;
       }
@@ -888,8 +888,8 @@
 
       .actions__conversion__zifrs {
         font-size: 12px;
-        margin-left: 15px;
-        margin-top: 5px;
+        margin-left: 15.008px;
+        margin-top: 5.008px;
 
         span {
           opacity: 0.6;
@@ -923,7 +923,7 @@
           content: "";
           position: absolute;
 
-          left: -13px;
+          left: -13.008px;
           top: 15%;
 
           width: 8px;
@@ -1029,9 +1029,9 @@
       select {
         width: 100%;
         padding: 10px;
-        height: 35px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 5px;
+        height: 35.008px;
+        border: 1.008px solid rgba(0, 0, 0, 0.2);
+        border-radius: 5.008px;
       }
     }
   }
@@ -1095,7 +1095,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 245px;
+  width: 245.008px;
 
   h3 {
     font-size: 16px;
@@ -1162,7 +1162,7 @@
   width: 320px;
 
   h3 {
-    font-size: 15px;
+    font-size: 15.008px;
     font-family: "Unbounded", sans-serif;
     font-weight: 400;
   }
@@ -1182,12 +1182,12 @@
 }
 
 .connects__second__graph__text {
-  font-size: 13px;
+  font-size: 13.008px;
 }
 
 .connects__third {
   h3 {
-    font-size: 15px;
+    font-size: 15.008px;
     font-family: "Unbounded", sans-serif;
     font-weight: 400;
   }
@@ -1213,7 +1213,7 @@
 .connects__left {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 5.008px;
 
   width: 200px;
 
@@ -1257,7 +1257,7 @@
 }
 
 .dynamics__session_rate__graph {
-  padding: 5px;
+  padding: 5.008px;
   background: var(--color-white);
   border-radius: 50%;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
@@ -1294,10 +1294,10 @@
 }
 
 .dynamics__item__text > p {
-  width: 145px;
+  width: 145.008px;
 }
 
 .dynamics__item__procents {
   display: flex;
-  gap: 5px;
+  gap: 5.008px;
 }
