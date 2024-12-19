@@ -298,7 +298,7 @@ const Dynamics = ({ percentage = 62.5, increment = 18.2 }) => {
 
                 <div className={style.dynamics__item__procents}>
                   <TrendUp />
-                  <p>39.6%</p>
+                  <p style={{ color: "#28C76F" }}>39.6%</p>
                 </div>
               </div>
               <ResponsiveContainer width={250} height={200}>
@@ -343,7 +343,7 @@ const Dynamics = ({ percentage = 62.5, increment = 18.2 }) => {
 
                 <div className={style.dynamics__item__procents}>
                   <TrendDown />
-                  <p>39.6%</p>
+                  <p style={{ color: "#EA5455" }}>39.6%</p>
                 </div>
               </div>
               <div>
@@ -352,7 +352,7 @@ const Dynamics = ({ percentage = 62.5, increment = 18.2 }) => {
                     layout="vertical"
                     data={secondData}
                     // margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                    margin={{ left: -60 }}
+                    margin={{ left: -55 }}
                   >
                     <CartesianGrid
                       strokeDasharray="3 3"
@@ -398,13 +398,12 @@ const Dynamics = ({ percentage = 62.5, increment = 18.2 }) => {
                 >
                   <PolarGrid />
                   <PolarAngleAxis dataKey="subject" fontSize={9} />
-                  <PolarRadiusAxis fontSize={9} />
                   <Tooltip />
                   <Radar
                     name="procents"
                     dataKey="A"
                     stroke="#28DAC6"
-                    fill="#28DAC6"
+                    fill="#7367F0"
                     fillOpacity={0.6}
                   />
                 </RadarChart>

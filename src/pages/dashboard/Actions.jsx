@@ -16,6 +16,7 @@ import { ReactComponent as Check1 } from "../../assets/icons/dashboard/actions/c
 import { ReactComponent as Check2 } from "../../assets/icons/dashboard/actions/check-circle-2.svg";
 import { ReactComponent as Walk } from "../../assets/icons/dashboard/actions/walk.svg";
 import { ReactComponent as More } from "../../assets/icons/dashboard/actions/more-vert.svg";
+import { Link } from "react-router-dom";
 
 const Actions = ({ percentage = 62.5, increment = 18.2 }) => {
   const [showPopup, setShowPopup] = useState(false);
@@ -53,6 +54,7 @@ const Actions = ({ percentage = 62.5, increment = 18.2 }) => {
 
   return (
     <section className={style.actions}>
+      <h2>Actions</h2>
       <aside className={style.actions__conversion}>
         <div className={style.actions__conversion__line}>
           <h3>Conversion line</h3>
@@ -148,6 +150,9 @@ const Actions = ({ percentage = 62.5, increment = 18.2 }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              background: "#fff",
+              boxShadow: "0px 0px 10px rgba(0,0,0,0.09)",
+              borderRadius: "50%",
             }}
           >
             {/* SVG контейнер */}
@@ -208,14 +213,14 @@ const Actions = ({ percentage = 62.5, increment = 18.2 }) => {
             >
               <div
                 style={{
-                  fontSize: "1.5rem",
-                  fontWeight: "bold",
+                  fontSize: "24px",
+                  fontWeight: "Light",
                   color: "#333",
                 }}
               >
                 {percentage}%
               </div>
-              <div style={{ fontSize: "1rem", color: "green" }}>
+              <div style={{ fontSize: "1rem", color: "#28C76F", marginTop: 5 }}>
                 +{increment}%
               </div>
             </div>
@@ -315,6 +320,10 @@ const Actions = ({ percentage = 62.5, increment = 18.2 }) => {
                   </select>
                 </li>
               </ul>
+
+              <div className={style.actions__activity__popup__link}>
+                <button>Reset filters</button>
+              </div>
             </div>
           )}
         </div>

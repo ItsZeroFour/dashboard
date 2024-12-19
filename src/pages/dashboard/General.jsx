@@ -39,12 +39,6 @@ const data = [
     value: 87,
     fill: "#9013FE", // Фиолетовый цвет
   },
-
-  {
-    name: "Category 5",
-    value: 35,
-    fill: "#432673", // Фиолетовый цвет
-  },
 ];
 
 const dataGender = [
@@ -91,6 +85,27 @@ const ageData = [
   { name: "45 - 50", value: 4555, color: "#2196F3", offset: 10 },
   { name: "50+", value: 8000, color: "#26C6DA", offset: 15 },
 ];
+
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div
+        style={{
+          backgroundColor: "#111",
+          color: "#fff",
+          padding: "5px",
+          borderRadius: "5px",
+          boxShadow: "0px 0px 5px rgba(0,0,0,0.2)",
+        }}
+      >
+        <p>{`${payload[0].name}`}</p>
+        <p>{`${payload[0].value}`}</p>
+      </div>
+    );
+  }
+
+  return null;
+};
 
 const General = () => {
   const { ref, inView } = useInView({
@@ -150,7 +165,9 @@ const General = () => {
                     style.dashboard__general__app__statistics__item__title
                   }
                 >
-                  <Star1 />
+                  <div>
+                    <Star1 />
+                  </div>
                   <p>Premium</p>
                 </div>
 
@@ -160,7 +177,9 @@ const General = () => {
                   }
                 >
                   <div>
-                    <p>15k</p>
+                    <p>
+                      <span>15k</span>
+                    </p>
                     <p>+1.3k</p>
                   </div>
 
@@ -177,7 +196,9 @@ const General = () => {
                     style.dashboard__general__app__statistics__item__title
                   }
                 >
-                  <Exclamation />
+                  <div>
+                    <Exclamation />
+                  </div>
                   <p>Premium</p>
                 </div>
 
@@ -187,7 +208,9 @@ const General = () => {
                   }
                 >
                   <div>
-                    <p>15k</p>
+                    <p>
+                      <span>15k</span>
+                    </p>
                     <p>+1.3k</p>
                   </div>
 
@@ -204,7 +227,9 @@ const General = () => {
                     style.dashboard__general__app__statistics__item__title
                   }
                 >
-                  <Dollar />
+                  <div>
+                    <Dollar />
+                  </div>
                   <p>Premium</p>
                 </div>
 
@@ -214,7 +239,9 @@ const General = () => {
                   }
                 >
                   <div>
-                    <p>15k</p>
+                    <p>
+                      <span>15k</span>
+                    </p>
                     <p>+1.3k</p>
                   </div>
 
@@ -231,7 +258,9 @@ const General = () => {
                     style.dashboard__general__app__statistics__item__title
                   }
                 >
-                  <Star2 />
+                  <div>
+                    <Star2 />
+                  </div>
                   <p>Premium</p>
                 </div>
 
@@ -241,7 +270,9 @@ const General = () => {
                   }
                 >
                   <div>
-                    <p>15k</p>
+                    <p>
+                      <span>15k</span>
+                    </p>
                     <p>+1.3k</p>
                   </div>
 
@@ -261,7 +292,7 @@ const General = () => {
                 cy="47%"
                 innerRadius="35%"
                 outerRadius="100%"
-                barSize={10}
+                barSize={13}
                 data={data}
                 startAngle={180}
                 endAngle={0}
@@ -301,7 +332,7 @@ const General = () => {
                   y="43%"
                   textAnchor="middle"
                   dominantBaseline="middle"
-                  style={{ fontSize: "12px", fill: "green" }}
+                  style={{ fontSize: "12px", fill: "#28C76F" }}
                 >
                   +520
                 </text>
@@ -329,6 +360,7 @@ const General = () => {
                   className={style.dashboard__general__people__gender__right}
                 >
                   <div
+                    className={style.dashboard__general__graph}
                     style={{
                       width: "200px",
                       height: "200px",
@@ -370,6 +402,7 @@ const General = () => {
                   </div>
 
                   <div
+                    className={style.dashboard__general__graph}
                     style={{
                       width: "200px",
                       height: "200px",
@@ -411,6 +444,7 @@ const General = () => {
                   </div>
 
                   <div
+                    className={style.dashboard__general__graph}
                     style={{
                       width: "200px",
                       height: "200px",
@@ -494,6 +528,7 @@ const General = () => {
                         <Cell
                           key={`cell-${index}`}
                           fill={deviceCOLORS[index]}
+                          stroke="none"
                         />
                       ))}
                     </Pie>
@@ -505,7 +540,7 @@ const General = () => {
                         y={100}
                         textAnchor="middle"
                         dominantBaseline="central"
-                        fontSize="14" // Увеличили шрифт
+                        fontSize="18" // Увеличили шрифт
                         fontWeight="bold"
                       >
                         8.52k
@@ -513,10 +548,10 @@ const General = () => {
 
                       <text
                         x={105}
-                        y={115}
+                        y={120}
                         textAnchor="middle"
                         dominantBaseline="central"
-                        fontSize="10" // Увеличили шрифт
+                        fontSize="14"
                         fontWeight="regular"
                       >
                         Total
@@ -565,13 +600,13 @@ const General = () => {
               </div>
 
               <div>
-                <PieChart width={170} height={170}>
+                <PieChart width={300} height={300}>
                   <Pie
                     data={ageData}
                     cx="50%"
                     cy="50%"
                     labelLine={false}
-                    outerRadius={85}
+                    outerRadius={130}
                     fill="#8884d8"
                     dataKey="value"
                   >
@@ -580,7 +615,7 @@ const General = () => {
                     ))}
                   </Pie>
 
-                  <Tooltip />
+                  <Tooltip content={<CustomTooltip />} />
                 </PieChart>
               </div>
             </div>

@@ -48,7 +48,7 @@ const Nationality = () => {
       <div className={style.nationality__county}>
         <h3>Country coverage</h3>
 
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="100%" height={500}>
           <BarChart
             data={countrys}
             margin={{ top: 50, right: 20, left: 20, bottom: 55 }}
@@ -78,7 +78,13 @@ const Nationality = () => {
                     transform={`translate(${x},${y + 10})`}
                     style={{ textAlign: "center" }}
                   >
-                    <text x={0} y={0} textAnchor="middle" fontSize={12}>
+                    <text
+                      x={0}
+                      y={0}
+                      textAnchor="middle"
+                      fontSize={12}
+                      opacity={0.5}
+                    >
                       {payload.value}
                     </text>
                     <foreignObject x={-20} y={10} width={40} height={40}>
@@ -97,7 +103,7 @@ const Nationality = () => {
       <div className={style.nationality__religions}>
         <h3>Religion</h3>
 
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="100%" height={500}>
           <BarChart
             data={religions}
             margin={{ top: 50, right: 20, left: 20, bottom: 55 }}
@@ -127,7 +133,13 @@ const Nationality = () => {
                     transform={`translate(${x},${y + 10})`}
                     style={{ textAlign: "center" }}
                   >
-                    <text x={0} y={0} textAnchor="middle" fontSize={12}>
+                    <text
+                      x={0}
+                      y={0}
+                      textAnchor="middle"
+                      fontSize={12}
+                      opacity={0.5}
+                    >
                       {payload.value}
                     </text>
                     <foreignObject x={-20} y={10} width={40} height={40}>

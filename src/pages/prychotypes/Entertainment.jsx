@@ -75,6 +75,7 @@ const Entertainment = () => {
                 <Cell
                   key={`cell-${index}`}
                   fill={COLORS[index % COLORS.length]}
+                  stroke="none"
                 />
               ))}
             </Pie>

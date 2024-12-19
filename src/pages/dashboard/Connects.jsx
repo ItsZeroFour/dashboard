@@ -36,6 +36,27 @@ const CustomLabel2 = ({ x, y, value }) => (
   </text>
 );
 
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div
+        style={{
+          backgroundColor: "#111",
+          color: "#fff",
+          padding: "5px",
+          borderRadius: "5px",
+          fontSize: 10,
+          boxShadow: "0px 0px 5px rgba(0,0,0,0.2)",
+        }}
+      >
+        <p>{`${payload[0].value}`}</p>
+      </div>
+    );
+  }
+
+  return null;
+};
+
 const connects = () => {
   const data = [
     {
@@ -127,7 +148,12 @@ const connects = () => {
 
   return (
     <section className={style.connects}>
-      <h3>Connects</h3>
+      <div className={style.connects__top}>
+        <h3>Connects</h3>
+        <div>
+          <p>12.67k</p>
+        </div>
+      </div>
       <div className={style.connects__items}>
         <div className={style.connects__first}>
           <p>Connection ratio</p>
@@ -203,7 +229,7 @@ const connects = () => {
                   <PolarGrid />
                   <PolarAngleAxis dataKey="subject" fontSize={9} />
                   <PolarRadiusAxis fontSize={9} />
-                  <Tooltip />
+                  <Tooltip content={<CustomTooltip />} />
                   <Radar
                     name="procents"
                     dataKey="A"

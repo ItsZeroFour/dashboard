@@ -1,4 +1,10 @@
 @font-face {
+  font-family: "Unbounded-lt";
+  src: local("../assets/fonts/Unbounded-Light.ttf"),
+    url("../assets/fonts/Unbounded-Light.ttf") format("truetype");
+}
+
+@font-face {
   font-family: "Unbounded";
   src: local("../assets/fonts/Unbounded-Regular.ttf"),
     url("../assets/fonts/Unbounded-Regular.ttf") format("truetype");

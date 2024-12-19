@@ -23,25 +23,25 @@ import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import Entertainment from "./Entertainment";
 
 const Psychotypes = ({ filterChoose }) => {
-  const [choosePsychotype, setChoosePsychotype] = useState(null);
-  const [choosePsychotype2, setChoosePsychotype2] = useState(null);
+  const [choosePsychotype, setChoosePsychotype] = useState({});
+  const [choosePsychotype2, setChoosePsychotype2] = useState({});
   const [showDetailsIndex, setShowDetailsIndex] = useState(null);
   const [selectValue, setSelectValue] = useState("");
 
   const data = [
-    { title: "Want to share energy", shows: 12, value: 23 },
-    { title: "Want to recuperate", shows: 5, value: 2 },
-    { title: "Need to cool down", shows: 6, value: 6 },
-    { title: "Romance me", shows: 12, value: 12 },
+    { title: "Want to share energy", shows: 12, value: 60 },
+    { title: "Want to recuperate", shows: 5, value: 25 },
+    { title: "Need to cool down", shows: 6, value: 68 },
+    { title: "Romance me", shows: 12, value: 56 },
     { title: "Find my mood, plz", shows: 31, value: 23 },
     { title: "Looking for harmony", shows: 5, value: 12 },
     { title: "Give me chill", shows: 7, value: 5 },
-    { title: "Want to admire", shows: 9, value: 9 },
+    { title: "Want to admire", shows: 9, value: 97 },
     { title: "No comments", shows: 0, value: 0 },
   ];
 
   const CustomLabel = ({ x, y, value }) => (
-    <text x={x + 70} y={y - 2} fill="#8c8c8c" fontSize="9" textAnchor="start">
+    <text x={x + 50} y={y - 8} fill="#8c8c8c" fontSize="9" textAnchor="start">
       {value}
     </text>
   );
@@ -151,13 +151,28 @@ const Psychotypes = ({ filterChoose }) => {
 
                     <td>
                       <button
+                        style={
+                          choosePsychotype?.name === name
+                            ? { background: "#d2cff8" }
+                            : { background: "#dcdfe5" }
+                        }
                         onClick={() =>
                           setChoosePsychotype({
                             name: name,
                           })
                         }
                       >
-                        <ChevronRight />
+                        <ChevronRight
+                          style={
+                            choosePsychotype?.name === name
+                              ? {
+                                  color: "#7367f0",
+                                }
+                              : {
+                                  color: "#a8A8A8",
+                                }
+                          }
+                        />
                       </button>
                     </td>
                   </tr>
@@ -165,7 +180,7 @@ const Psychotypes = ({ filterChoose }) => {
               </table>
             </div>
 
-            {choosePsychotype && (
+            {choosePsychotype.name && (
               <React.Fragment>
                 <div
                   className={`${style.psychotypes__item} ${style.psychotypes__item__spec2}`}
@@ -453,6 +468,11 @@ const Psychotypes = ({ filterChoose }) => {
                               {new Intl.NumberFormat("en").format(overPeriod)}
                             </p>
                             <button
+                              style={
+                                showDetailsIndex === index
+                                  ? { background: "#d2cff8" }
+                                  : { background: "#dcdfe5" }
+                              }
                               onClick={() =>
                                 setShowDetailsIndex(
                                   showDetailsIndex === index ? null : index
@@ -462,7 +482,10 @@ const Psychotypes = ({ filterChoose }) => {
                               <ChevronDown
                                 style={
                                   showDetailsIndex === index
-                                    ? { transform: "rotate(180deg)" }
+                                    ? {
+                                        transform: "rotate(180deg)",
+                                        color: "#7367f0",
+                                      }
                                     : {
                                         transform: "rotate(0deg)",
                                       }
@@ -532,6 +555,7 @@ const Psychotypes = ({ filterChoose }) => {
                       <button>
                         <ArrowDown />
                       </button>
+                      <p>Content</p>
                     </div>
 
                     <p>Total people</p>
@@ -725,7 +749,7 @@ const Psychotypes = ({ filterChoose }) => {
                       <p>{new Intl.NumberFormat("en").format(totalPeople)}</p>
                     </td>
 
-                    <td>
+                    <td className={style.psychotypes__list__item__3}>
                       <p
                         style={
                           overPeriod < 0
@@ -740,13 +764,28 @@ const Psychotypes = ({ filterChoose }) => {
 
                     <td>
                       <button
+                        style={
+                          choosePsychotype2.name === name
+                            ? { background: "#d2cff8" }
+                            : { background: "#dcdfe5" }
+                        }
                         onClick={() =>
                           setChoosePsychotype2({
                             name: name,
                           })
                         }
                       >
-                        <ChevronRight />
+                        <ChevronRight
+                          style={
+                            choosePsychotype2?.name === name
+                              ? {
+                                  color: "#7367f0",
+                                }
+                              : {
+                                  color: "#a8A8A8",
+                                }
+                          }
+                        />
                       </button>
                     </td>
                   </tr>
@@ -754,7 +793,7 @@ const Psychotypes = ({ filterChoose }) => {
               </table>
             </div>
 
-            {choosePsychotype2 && (
+            {choosePsychotype2.name && (
               <React.Fragment>
                 <div
                   className={`${style.psychotypes__item} ${style.psychotypes__item__spec}`}
@@ -784,7 +823,6 @@ const Psychotypes = ({ filterChoose }) => {
                           justifyContent: "space-between",
                         }}
                       >
-                        {/* Текстовые метки */}
                         <span
                           style={{
                             fontSize: "14px",
@@ -797,7 +835,7 @@ const Psychotypes = ({ filterChoose }) => {
                         <span
                           style={{
                             width: "30px",
-                            textAlign: "right",
+                            textAlign: "left",
                             color: "#4A4A4A",
                           }}
                         >
@@ -805,23 +843,49 @@ const Psychotypes = ({ filterChoose }) => {
                         </span>
 
                         {/* График */}
-                        <div style={{ flex: 2, marginLeft: "10px" }}>
-                          <ResponsiveContainer width="100%" height={20}>
-                            <BarChart layout="vertical" data={[item]}>
-                              <XAxis type="number" hide />
-                              <YAxis type="category" dataKey="label" hide />
+                        <div
+                          style={{
+                            flex: 2,
+                            marginLeft: "10px",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          <ResponsiveContainer width="80%" height={20}>
+                            <BarChart
+                              layout="vertical"
+                              data={[{ ...item, fullWidth: 100 }]}
+                              margin={{ top: 10, right: 20 }}
+                              style={{ marginLeft: 15 }}
+                            >
+                              <XAxis type="number" domain={[0, 100]} hide />
+                              <YAxis
+                                type="category"
+                                dataKey="label"
+                                hide
+                                tick={{
+                                  textAnchor: "middle",
+                                  dx: 0,
+                                  dy: 0,
+                                  fontSize: 12,
+                                }}
+                              />
+                              {/* Серая линия до конца */}
                               <Bar
-                                dataKey="total"
+                                dataKey="fullWidth"
                                 fill="#F3F3F3"
                                 barSize={10}
-                                radius={[10, 10, 10, 10]}
+                                radius={[5, 5, 5, 5]}
                               />
+                              {/* Основная линия */}
                               <Bar
                                 dataKey="value"
                                 fill="#7B61FF"
                                 barSize={10}
-                                radius={[10, 10, 10, 10]}
+                                radius={[5, 5, 5, 5]}
                                 label={<CustomLabel />}
+                                style={{ transform: "translateY(-5px)" }}
                               />
                             </BarChart>
                           </ResponsiveContainer>

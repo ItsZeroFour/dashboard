@@ -43,7 +43,7 @@ const bubbleTextPlugin = {
         const value2 = dataset.data[index].p;
 
         // Размер и стиль текста
-        ctx.font = "Regular 12px Unbounded";
+        ctx.font = "Regular 14px Unbounded";
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
@@ -205,7 +205,7 @@ const PsychotypesAndEvents = () => {
                     {item.title}
                   </span>
                   <span>
-                    {item.value} / {item.procents}%
+                    {item.value} / <span>{item.procents}%</span>
                   </span>
                 </div>
               </div>
