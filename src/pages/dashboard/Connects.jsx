@@ -228,7 +228,7 @@ const connects = () => {
                 >
                   <PolarGrid />
                   <PolarAngleAxis dataKey="subject" fontSize={9} />
-                  <PolarRadiusAxis fontSize={9} />
+                  {/* <PolarRadiusAxis fontSize={9} /> */}
                   <Tooltip content={<CustomTooltip />} />
                   <Radar
                     name="procents"

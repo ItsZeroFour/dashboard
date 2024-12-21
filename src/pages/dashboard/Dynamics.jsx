@@ -104,6 +104,27 @@ const Dynamics = ({ percentage = 62.5, increment = 18.2 }) => {
     return `${hours}:${minutes === 0 ? "00" : minutes}`;
   };
 
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div
+          style={{
+            backgroundColor: "#111",
+            color: "#fff",
+            padding: "5px",
+            borderRadius: "5px",
+            fontSize: 10,
+            boxShadow: "0px 0px 5px rgba(0,0,0,0.2)",
+          }}
+        >
+          <p>{`${payload[0].value}`}</p>
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <section className={style.dynamics}>
       <h3>Dynamics</h3>
@@ -408,7 +429,7 @@ const Dynamics = ({ percentage = 62.5, increment = 18.2 }) => {
                 >
                   <PolarGrid />
                   <PolarAngleAxis dataKey="subject" fontSize={9} />
-                  <Tooltip />
+                  <Tooltip content={<CustomTooltip />} />
                   <Radar
                     name="procents"
                     dataKey="A"
