@@ -65,8 +65,10 @@
       font-size: 10px;
       color: rgba(0, 0, 0, 0.5);
 
+
       &:nth-child(3) {
-        padding-left: 20px;
+        width: 100px;
+        padding-left: 10px;
       }
     }
 
@@ -83,16 +85,18 @@
       border-radius: 10px;
 
       transition: all 0.3s ease;
+      margin-left: 20px;
 
       svg {
         color: #a8aaae;
+        transition: all 0.3s ease;
       }
 
       &:hover {
-        background: #aba5ea;
+        background: #d2cff8 !important;
 
         svg {
-          color: var(--color-violet);
+          color: var(--color-violet) !important;
         }
       }
     }
@@ -166,7 +170,7 @@
     }
 
     &:hover {
-      background: #aba5ea;
+      background: #d2cff8 !important;
       svg {
         color: var(--color-violet);
       }
@@ -206,6 +210,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  ul {
+    li {
+      p {
+        &:last-child {
+          margin-right: 60px;
+        }
+
+        &:nth-child(2) {
+          width: 60px !important;
+        }
+
+        &:nth-child(1) {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
 }
 
 .psychotypes__item__select {
@@ -215,7 +237,13 @@
     width: 100%;
     padding: 10px;
     border-radius: 10px;
-    background: var(--color-gray-secondary);
+    appearance: none;
+    background-color: var(--color-gray-secondary);
+    background-image: url("../../assets/icons/map/chevron-down.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 10px);
+    color: var(--color-black);
   }
 }
 

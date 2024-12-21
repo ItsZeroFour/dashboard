@@ -41,7 +41,7 @@ const Psychotypes = ({ filterChoose }) => {
   ];
 
   const CustomLabel = ({ x, y, value }) => (
-    <text x={x + 50} y={y - 8} fill="#8c8c8c" fontSize="9" textAnchor="start">
+    <text x={x + 50} y={y - 7} fill="#8c8c8c" fontSize="9" textAnchor="start">
       {value}
     </text>
   );
@@ -167,6 +167,7 @@ const Psychotypes = ({ filterChoose }) => {
                             choosePsychotype?.name === name
                               ? {
                                   color: "#7367f0",
+                                  transform: "rotate(180deg)",
                                 }
                               : {
                                   color: "#a8A8A8",

@@ -388,7 +388,17 @@ const Dynamics = ({ percentage = 62.5, increment = 18.2 }) => {
               </div>
             </div>
 
-            <div style={{ width: 200, height: 200 }}>
+            <div
+              style={{ width: 200, height: 200 }}
+              className={style.dynamics__radar}
+            >
+              <p>
+                The most popular time period <br />{" "}
+                <span className={style.dynamics__radar__time}>
+                  Sunday, 15 pm - 01 am
+                </span>
+                <span className={style.dynamics__radar__cnt}>15.4k</span>
+              </p>
               <ResponsiveContainer width={200} height={200}>
                 <RadarChart
                   cx="50%"

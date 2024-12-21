@@ -204,9 +204,11 @@ const PsychotypesAndEvents = () => {
                     {item.icon}
                     {item.title}
                   </span>
-                  <span>
-                    {item.value} / <span>{item.procents}%</span>
-                  </span>
+                  <div>
+                    <span>{item.value}</span>
+                    <span>/</span>
+                    <span>{item.procents}%</span>
+                  </div>
                 </div>
               </div>
 
